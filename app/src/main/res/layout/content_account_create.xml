@@ -11,7 +11,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".AccountCreateActivity"
-    android:background="@color/colorPrimaryDark">
+    android:background="@drawable/gradient">
 
     <!-- Login progress -->
     <ProgressBar
@@ -25,20 +25,19 @@
 
     <Button
         android:id="@+id/back_btn"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
-        android:background="@color/colorPrimaryDark"
+        android:text="@string/back"
         android:textColor="@color/bodyTxt"
-        android:textAlignment="textStart"
-
+        android:layout_gravity="left"
+android:background="@android:color/transparent"
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Join GYBITG"
-        android:textColor="@color/bodyTxt"
+        android:textColor="@color/colorAccent"
         android:textAlignment="center"
         android:textSize="20dp"
         android:padding="60dp"/>

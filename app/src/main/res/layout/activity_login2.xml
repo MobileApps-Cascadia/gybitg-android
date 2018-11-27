@@ -11,7 +11,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".LoginActivity"
-    android:background="@color/colorPrimaryDark">
+    android:background="@drawable/gradient">
 
     <!-- Login progress -->
     <ProgressBar
@@ -53,9 +53,11 @@
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textColor="@color/bodyTxt"
-                    android:background="@color/colorPrimary"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
+                    android:background="@android:color/transparent"
+                    android:textColorHint="@color/bodyTxt"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -74,7 +76,10 @@
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:background="@color/colorPrimary"/>
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/bodyTxt"
+                    android:textColorHint="@color/bodyTxt"
+                    android:layout_marginBottom="10dp"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -83,7 +88,8 @@
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:text="@string/action_sign_in"
                 android:textStyle="bold"
                 android:textColor="@color/bodyTxt"
@@ -92,15 +98,15 @@
                 android:id="@+id/forgotPWBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="forgot Password?"
-                android:background="@color/colorPrimaryDark"
+                android:text="@string/forgot_password"
+                android:background="@android:color/transparent"
                 android:textColor="@color/colorAccent"/>
             <Button
                 android:id="@+id/createAccountBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Create Account"
-                android:background="@color/colorPrimaryDark"
+                android:text="@string/create_account"
+                android:background="@android:color/transparent"
                 android:textColor="@color/colorAccent"
                 android:visibility="visible"/>
         </LinearLayout>
