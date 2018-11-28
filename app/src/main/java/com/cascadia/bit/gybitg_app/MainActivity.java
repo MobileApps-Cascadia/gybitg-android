@@ -58,7 +58,8 @@ public class MainActivity extends AppCompatActivity
         String[] items = new String[]{"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15+"};
 //create an adapter to describe how the items are displayed, adapters are used in several places in android.
 //There are multiple variations of this, but this is the basic variant
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item , items);
 //set the spinners adapter to the previously created one
         dropdownPoints.setAdapter(adapter);
         dropdownAssists.setAdapter(adapter);
@@ -66,7 +67,13 @@ public class MainActivity extends AppCompatActivity
         dropdownSteals.setAdapter(adapter);
         dropdownBlocks.setAdapter(adapter);
         dropdownTurnovers.setAdapter(adapter);
+        //uses the spinner_dropdown_item.xml to set the background and text color of the items in the spinner
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        dropdownPoints.setAdapter(adapter);
+
     }
+
+
 
     @Override
     public void onBackPressed() {

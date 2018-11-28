@@ -24,16 +24,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ProfileActivity" />
+            android:theme="@style/AppTheme.NoActionBar" >
+    </activity>
+
+        <activity android:name=".ProfileActivity"
+
+            android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity
             android:name=".AccountCreateActivity"
             android:label="@string/title_activity_account_create"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ProfileCreateActivity"></activity>
+
+        <activity android:name=".ProfileCreateActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+        </activity>
     </application>
 
 </manifest>

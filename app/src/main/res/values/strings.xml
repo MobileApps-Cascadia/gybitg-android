@@ -22,7 +22,7 @@
     <string name="title_activity_account_create">AccountCreateActivity</string>
     <string name="first_name">First Name</string>
     <string name="action_register">Create Account</string>
-    <string name="title_activity_profile"></string>
+    <string name="title_activity_profile">Profile</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="create_account">Create Account</string>
 
