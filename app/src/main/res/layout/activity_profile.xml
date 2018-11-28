@@ -66,7 +66,7 @@
                 android:id="@+id/schoolValuetxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Danville High"
+                android:text="Danville High (Danville, In)"
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt"
                 android:layout_below="@id/personalStatstxt"
@@ -74,11 +74,11 @@
                 android:textAlignment="textEnd"/>
 
 
-            <TextView
+       <!--     <TextView
                 android:id="@+id/schoolTeamtxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SCHOOL TEAM:  "
+                android:text="CONFERENCE:  "
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt"
                 android:layout_below="@id/schooltxt"
@@ -87,12 +87,12 @@
                 android:id="@+id/schoolTeamValuetxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Rebels"
+                android:text="KingCo"
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt"
                 android:textAlignment="textEnd"
                 android:layout_below="@id/schoolValuetxt"
-                android:layout_toRightOf="@id/schoolTeamtxt"/>
+                android:layout_toRightOf="@id/schoolTeamtxt"/>-->
 
             <TextView
                 android:id="@+id/uaaTeamtxt"
@@ -101,16 +101,15 @@
                 android:text="UAA TEAM:  "
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt"
-
-                android:layout_below="@id/schoolTeamtxt"/>
+                android:layout_below="@id/schooltxt"/>
 
             <TextView
                 android:id="@+id/uaaTeamValuetxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/schoolTeamValuetxt"
+                android:layout_below="@id/schoolValuetxt"
                 android:layout_toEndOf="@id/uaaTeamtxt"
-                android:text="Vikings"
+                android:text="Washington Elite"
                 android:textColor="@color/bodyTxt"
                 android:textAlignment="textEnd"
                 android:textColorHighlight="@color/bodyTxt" />
@@ -202,13 +201,31 @@
                 android:textAlignment="textEnd"
                 />
             <TextView
+                android:id="@+id/stealstxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="STEALS:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/reboundstxt"/>
+            <TextView
+                android:id="@+id/stealsValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/reboundsValuetxt"
+                android:textAlignment="textEnd"
+                />
+            <TextView
                 android:id="@+id/assiststxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ASSISTS:  "
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt"
-                android:layout_below="@id/reboundstxt"/>
+                android:layout_below="@id/stealstxt"/>
             <TextView
                 android:id="@+id/assistsValuetxt"
                 android:layout_width="match_parent"
@@ -216,7 +233,7 @@
                 android:text="5"
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt"
-                android:layout_below="@id/reboundstxt"
+                android:layout_below="@id/stealsValuetxt"
                 android:textAlignment="textEnd"/>
             <TextView
                 android:id="@+id/fgmtxt"
