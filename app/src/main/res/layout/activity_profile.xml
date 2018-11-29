@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".ProfileActivity"
+    android:background="@drawable/gradient">
+
+    <!-- Login progress -->
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="198dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        app:srcCompat="@drawable/profilepic23gybitg" />
+
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/email_login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/personalStatstxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:text="PERSONAL STATS"
+                android:textColor="@color/colorAccent"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_alignParentLeft="true"
+                android:textAlignment="textStart"/>
+
+            <TextView
+                android:id="@+id/schooltxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SCHOOL:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/personalStatstxt"
+                android:layout_alignParentLeft="true"
+                />
+            <TextView
+                android:id="@+id/schoolValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Danville High (Danville, In)"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/personalStatstxt"
+                android:layout_toRightOf="@id/schooltxt"
+                android:textAlignment="textEnd"/>
+
+
+       <!--     <TextView
+                android:id="@+id/schoolTeamtxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CONFERENCE:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/schooltxt"
+                />
+            <TextView
+                android:id="@+id/schoolTeamValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="KingCo"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:textAlignment="textEnd"
+                android:layout_below="@id/schoolValuetxt"
+                android:layout_toRightOf="@id/schoolTeamtxt"/>-->
+
+            <TextView
+                android:id="@+id/uaaTeamtxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UAA TEAM:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/schooltxt"/>
+
+            <TextView
+                android:id="@+id/uaaTeamValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/schoolValuetxt"
+                android:layout_toEndOf="@id/uaaTeamtxt"
+                android:text="Washington Elite"
+                android:textColor="@color/bodyTxt"
+                android:textAlignment="textEnd"
+                android:textColorHighlight="@color/bodyTxt" />
+            <TextView
+                android:id="@+id/yeartxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CLASS:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/uaaTeamtxt"/>
+            <TextView
+                android:id="@+id/yearValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Junior"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/uaaTeamValuetxt"
+                android:layout_toRightOf="@id/yeartxt"
+                android:textAlignment="textEnd"
+                />
+
+            <TextView
+                android:id="@+id/positiontxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="POSITION:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/yeartxt"/>
+            <TextView
+                android:id="@+id/positionValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Forward"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/yearValuetxt"
+                android:layout_toRightOf="@+id/positiontxt"
+                android:textAlignment="textEnd"/>
+            <TextView
+                android:id="@+id/basketBallStatstxt"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BASKETBALL STATS"
+                android:textColor="@color/colorAccent"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/positiontxt"/>
+            <TextView
+                android:id="@+id/pointstxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="POINTS:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/basketBallStatstxt"
+                />
+            <TextView
+                android:id="@+id/pointsValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/basketBallStatstxt"
+                android:layout_toRightOf="@id/pointstxt"
+                android:textAlignment="textEnd"
+                />
+
+            <TextView
+                android:id="@+id/reboundstxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="REBOUNDS:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/pointstxt"/>
+            <TextView
+                android:id="@+id/reboundsValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/pointsValuetxt"
+                android:textAlignment="textEnd"
+                />
+            <TextView
+                android:id="@+id/stealstxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="STEALS:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/reboundstxt"/>
+            <TextView
+                android:id="@+id/stealsValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/reboundsValuetxt"
+                android:textAlignment="textEnd"
+                />
+            <TextView
+                android:id="@+id/assiststxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ASSISTS:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/stealstxt"/>
+            <TextView
+                android:id="@+id/assistsValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/stealsValuetxt"
+                android:textAlignment="textEnd"/>
+            <TextView
+                android:id="@+id/fgmtxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FGM:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/assiststxt"/>
+            <TextView
+                android:id="@+id/fgmValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="7"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/assistsValuetxt"
+                android:layout_toRightOf="@id/assiststxt"
+                android:textAlignment="textEnd"/>
+            <TextView
+                android:id="@+id/fgatxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FGA:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/fgmtxt"/>
+            <TextView
+                android:id="@+id/fgaValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="13"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/fgmValuetxt"
+                android:layout_toRightOf="@id/fgatxt"
+                android:textAlignment="textEnd"/>
+            <TextView
+                android:id="@+id/fgpercenttxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FG%:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/fgatxt"/>
+            <TextView
+                android:id="@+id/fgpercentValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="53.0"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/fgaValuetxt"
+                android:textAlignment="textEnd"/>
+
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>
