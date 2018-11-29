@@ -58,7 +58,10 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+
+                android:textColorHint="@color/bodyTxt"
+                android:backgroundTint="@color/bodyTxt">
 
                 <EditText
                     android:id="@+id/firstNameinput"
@@ -79,7 +82,9 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/bodyTxt"
+                android:backgroundTint="@color/bodyTxt">
 
                 <EditText
                     android:id="@+id/lastNameinput"
@@ -101,7 +106,9 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/bodyTxt"
+                android:backgroundTint="@color/bodyTxt">
 
                 <EditText
                     android:id="@+id/schoolinput"
@@ -123,7 +130,9 @@
 
           <!--  <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                 android:textColorHint="@color/bodyTxt"
+                android:backgroundTint="@color/bodyTxt">
 
                 <EditText
                     android:id="@+id/highSchoolTeaminput"
@@ -145,7 +154,9 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/bodyTxt"
+                android:backgroundTint="@color/bodyTxt">
 
                 <EditText
                     android:id="@+id/uaaTeaminput"
@@ -165,7 +176,9 @@
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/bodyTxt"
+                android:backgroundTint="@color/bodyTxt">
 
                 <EditText
                     android:id="@+id/classinput"
@@ -186,7 +199,9 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/bodyTxt"
+                android:backgroundTint="@color/bodyTxt">
 
                 <EditText
                     android:id="@+id/positioninput"
