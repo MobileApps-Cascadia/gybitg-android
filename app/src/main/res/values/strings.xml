@@ -39,4 +39,7 @@
     <string name="prompt_class">Class</string>
     <string name="title_create_profile">Create Profile</string>
     <string name="back">Back</string>
+
+    <!-- Strings related to account creation edit-->
+    <string name="join_GYBITG">JOIN GYBITG</string>
 </resources>
