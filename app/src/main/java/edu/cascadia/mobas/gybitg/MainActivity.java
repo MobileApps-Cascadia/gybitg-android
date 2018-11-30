@@ -1,11 +1,8 @@
 // GYBITG - MA, JA, JH
 
-package com.cascadia.bit.gybitg_app;
+package edu.cascadia.mobas.gybitg;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
+
+import com.cascadia.bit.gybitg.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cascadia.bit.gybitg_app">
+    package="com.cascadia.bit.gybitg">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="edu.cascadia.mobas.gybitg.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <!--next lines makes the activity launch and is a top level activity Main is the home
@@ -28,26 +28,26 @@
         </activity>
 
         <activity
-            android:name=".LoginActivity"
+            android:name="edu.cascadia.mobas.gybitg.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar"
             >
 
     </activity>
 
-        <activity android:name=".ProfileActivity"
+        <activity android:name="edu.cascadia.mobas.gybitg.ProfileActivity"
 
             android:theme="@style/AppTheme.NoActionBar">
 
 </activity>
         <activity
-            android:name=".AccountCreateActivity"
+            android:name="edu.cascadia.mobas.gybitg.AccountCreateActivity"
             android:label="@string/title_activity_account_create"
             android:theme="@style/AppTheme.NoActionBar" >
 
         </activity>
 
-        <activity android:name=".ProfileCreateActivity"
+        <activity android:name="edu.cascadia.mobas.gybitg.ProfileCreateActivity"
             android:theme="@style/AppTheme.NoActionBar"
             >
 
