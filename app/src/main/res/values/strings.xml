@@ -33,7 +33,7 @@
     <string name="prompt_firstName">First Name</string>
     <string name="prompt_lastName">Last Name</string>
     <string name="prompt_highSchoolTeam">High School Team</string>
-    <string name="prompt_UAATeam">UAA Team</string>
+    <string name="prompt_aauTeam">AAU Team</string>
     <string name="prompt_position">Position</string>
     <string name="prompt_pwd">Password</string>
     <string name="prompt_class">Class</string>
