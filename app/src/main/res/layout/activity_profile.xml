@@ -22,27 +22,37 @@
     <RelativeLayout
         android:id="@+id/profile_header"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="300dp">
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="200dp">
+
             <ImageView
                 android:id="@+id/profile_background_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="0dp"
                 app:srcCompat="@drawable/court_background_image" />
 
             <ImageView
                 android:id="@+id/profile_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="90dp"
                 app:srcCompat="@drawable/kendra" />
         </FrameLayout>
+
+        <TextView
+            android:id="@+id/profile_name"
+            style="@style/profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_stats"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="134dp"
+            android:text="@string/profile_name" />
 
         <Button
             android:id="@+id/edit_stats"
@@ -59,8 +69,8 @@
             android:layout_height="30dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="2dp"
-            android:layout_marginBottom="2dp">
+            android:layout_marginStart="0dp"
+            android:layout_marginBottom="0dp">
 
             <TextView
                 android:id="@+id/feed_label"
@@ -107,6 +117,21 @@
                 android:layout_marginEnd="41dp"
                 android:text="@string/contact_label_text" />
         </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="2dp"
+            android:layout_height="1dp"
+            android:background="@color/colorOrange"/>
+
+        <TextView
+            android:id="@+id/profile_user_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="29dp"
+            android:layout_marginBottom="44dp"
+            android:text="TextView" />
     </RelativeLayout>
 
     <ScrollView
@@ -236,16 +261,17 @@
                 android:layout_below="@id/yearValuetxt"
                 android:layout_toRightOf="@+id/positiontxt"
                 android:textAlignment="textEnd"/>
+
             <TextView
                 android:id="@+id/basketBallStatstxt"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="BASKETBALL STATS"
+                android:layout_below="@id/positiontxt"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/stats_games_header"
                 android:textColor="@color/colorAccent"
-                android:textColorHighlight="@color/bodyTxt"
-                android:layout_below="@id/positiontxt"/>
+                android:textColorHighlight="@color/bodyTxt" />
             <TextView
                 android:id="@+id/pointstxt"
                 android:layout_width="wrap_content"
