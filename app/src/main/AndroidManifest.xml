@@ -20,7 +20,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <!--next lines makes the activity launch and is a top level activity Main is the home
             page-->
-             <intent-filter>
+            <intent-filter>
                   <action android:name="android.intent.action.MAIN" />
 
                    <category android:name="android.intent.category.LAUNCHER" />
@@ -32,7 +32,7 @@
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar"
             >
-
+          
     </activity>
 
         <activity android:name=".ProfileActivity"
