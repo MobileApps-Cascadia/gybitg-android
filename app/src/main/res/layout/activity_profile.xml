@@ -6,10 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".ProfileActivity"
     android:background="@drawable/gradient">
 
@@ -22,35 +18,124 @@
         android:layout_marginBottom="8dp"
         android:visibility="gone" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="198dp"
-        android:backgroundTint="@color/colorPrimaryDark"
-        app:srcCompat="@drawable/profilepic23gybitg" />
 
+    <RelativeLayout
+        android:id="@+id/profile_header"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/profile_background_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="0dp"
+                app:srcCompat="@drawable/court_background_image" />
+
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:srcCompat="@drawable/kendra" />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/edit_stats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/edit_button" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="2dp"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:id="@+id/feed_label"
+                style="@style/profile_navigation_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="38dp"
+                android:text="@string/feed_label_text" />
+
+            <TextView
+                android:id="@+id/stats_label"
+                style="@style/profile_navigation_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="123dp"
+                android:layout_marginEnd="22dp"
+                android:layout_toStartOf="@+id/gallery_label"
+                android:text="@string/stats_label_text" />
+
+            <TextView
+                android:id="@+id/gallery_label"
+                style="@style/profile_navigation_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/feed_label"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="135dp"
+                android:layout_marginBottom="0dp"
+                android:text="@string/gallery_label_text" />
+
+            <TextView
+                android:id="@+id/contact_label"
+                style="@style/profile_navigation_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="41dp"
+                android:text="@string/contact_label_text" />
+        </RelativeLayout>
+    </RelativeLayout>
 
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        >
 
         <RelativeLayout
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/personalStatstxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:text="PERSONAL STATS"
-                android:textColor="@color/colorAccent"
-                android:textColorHighlight="@color/bodyTxt"
                 android:layout_alignParentLeft="true"
-                android:textAlignment="textStart"/>
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/stats_personal_header"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorAccent"
+                android:textColorHighlight="@color/bodyTxt" />
 
             <TextView
                 android:id="@+id/schooltxt"

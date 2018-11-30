@@ -1,4 +1,4 @@
-<resources>
+<resources  xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">GYBITG</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -41,5 +41,20 @@
     <string name="back">Back</string>
 
     <!-- Strings related to account creation edit-->
-    <string name="join_GYBITG">JOIN GYBITG</string>
+    <string name="join_GYBITG">Join GYBITG Today!</string>
+    <string name="GYBITG_long">Get Your Butt in the Gym</string>
+
+    <!--Profile Strings -->
+    <string name="edit_button">edit</string>
+    <string name="save_button">save</string>
+    <string name="feed_label_text">Feed</string>
+    <string name="stats_label_text">Stats</string>
+    <string name="gallery_label_text">Gallery</string>
+    <string name="contact_label_text">Contact</string>
+
+
+
+    <!-- Stats -->
+    <string name="stats_personal_header"><u>PERSONAL INFO</u></string>
+
 </resources>
