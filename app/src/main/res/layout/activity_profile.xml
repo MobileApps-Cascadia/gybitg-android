@@ -183,7 +183,7 @@
                 android:id="@+id/uaaTeamtxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="UAA TEAM:  "
+                android:text="AAU TEAM:  "
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt"
                 android:layout_below="@id/schooltxt"/>
