@@ -48,11 +48,10 @@
             style="@style/profile_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/edit_stats"
-            android:layout_alignParentStart="true"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="134dp"
+            android:layout_marginTop="200dp"
             android:text="@string/profile_name" />
+
         <TextView
             android:id="@+id/profile_user_position"
             style="@style/profile_quick_info"
@@ -74,16 +73,6 @@
             android:layout_marginStart="32dp"
             android:layout_marginBottom="40dp"
             android:text="@string/profile_class" />
-
-        <Button
-            android:id="@+id/edit_stats"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="14dp"
-            android:layout_marginEnd="15dp"
-            android:text="@string/edit_button" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -173,6 +162,14 @@
                 android:textAlignment="textStart"
                 android:textColor="@color/colorAccent"
                 android:textColorHighlight="@color/bodyTxt" />
+
+            <Button
+                android:id="@+id/edit_stats"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:text="@string/edit_button" />
 
             <TextView
                 android:id="@+id/schooltxt"
@@ -411,6 +408,16 @@
                 android:textColorHighlight="@color/bodyTxt"
                 android:layout_below="@id/fgaValuetxt"
                 android:textAlignment="textEnd"/>
+
+            <Button
+                android:id="@+id/add_game"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="111dp"
+                android:layout_marginEnd="0dp"
+                android:text="@string/stats_add_game" />
 
         </RelativeLayout>
     </ScrollView>

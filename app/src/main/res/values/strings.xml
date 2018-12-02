@@ -59,5 +59,6 @@
     <!-- Stats -->
     <string name="stats_personal_header"><u>PERSONAL INFO</u></string>
     <string name="stats_games_header">GAME STATS</string>
+    <string name="stats_add_game">ADD GAME</string>
 
 </resources>
