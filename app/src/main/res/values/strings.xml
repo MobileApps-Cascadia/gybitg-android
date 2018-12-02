@@ -51,10 +51,14 @@
     <string name="stats_label_text">Stats</string>
     <string name="gallery_label_text">Gallery</string>
     <string name="contact_label_text">Contact</string>
-
+    <string name="profile_name">Kendra Smith</string>
+    <string name="profile_position">Guard-Forward</string>
+    <string name="profile_class">Class of 2018</string>
 
 
     <!-- Stats -->
     <string name="stats_personal_header"><u>PERSONAL INFO</u></string>
+    <string name="stats_games_header">GAME STATS</string>
+    <string name="stats_add_game">ADD GAME</string>
 
 </resources>
