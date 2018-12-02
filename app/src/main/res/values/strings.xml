@@ -52,7 +52,8 @@
     <string name="gallery_label_text">Gallery</string>
     <string name="contact_label_text">Contact</string>
     <string name="profile_name">Kendra Smith</string>
-
+    <string name="profile_position">Guard-Forward</string>
+    <string name="profile_class">Class of 2018</string>
 
 
     <!-- Stats -->
