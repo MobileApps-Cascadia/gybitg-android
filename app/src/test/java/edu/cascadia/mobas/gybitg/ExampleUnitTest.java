@@ -1,4 +1,4 @@
-package com.cascadia.bit.gybitg_app;
+package edu.cascadia.mobas.gybitg;
 
 import org.junit.Test;
 

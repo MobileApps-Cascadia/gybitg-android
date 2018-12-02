@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".ProfileActivity"
+    tools:context="edu.cascadia.mobas.gybitg.ProfileActivity"
     android:background="@drawable/gradient">
 
     <!-- Login progress -->
