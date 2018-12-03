@@ -4,7 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import com.cascadia.bit.gybitg.R;
+import edu.cascadia.mobas.gybit.R;
+
 
 public class AccountCreateActivity extends AppCompatActivity {
 

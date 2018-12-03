@@ -29,10 +29,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.cascadia.bit.gybitg.R;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import edu.cascadia.mobas.gybit.R;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
