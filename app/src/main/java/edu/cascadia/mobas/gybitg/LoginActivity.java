@@ -32,7 +32,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.cascadia.mobas.gybit.R;
+import edu.cascadia.mobas.gybitg.R;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
