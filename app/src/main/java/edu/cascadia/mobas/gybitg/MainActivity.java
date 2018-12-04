@@ -5,7 +5,7 @@ package edu.cascadia.mobas.gybitg;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import edu.cascadia.mobas.gybit.R;
+import edu.cascadia.mobas.gybitg.R;
 
 
 public class MainActivity extends AppCompatActivity
