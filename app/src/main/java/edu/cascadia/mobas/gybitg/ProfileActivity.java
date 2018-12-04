@@ -3,7 +3,7 @@ package edu.cascadia.mobas.gybitg;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import edu.cascadia.mobas.gybit.R;
+import edu.cascadia.mobas.gybitg.R;
 
 public class ProfileActivity extends AppCompatActivity {
 
