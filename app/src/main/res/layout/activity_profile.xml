@@ -281,15 +281,15 @@
                 android:text="@string/stats_games_header"
                 android:textColor="@color/colorAccent"
                 android:textColorHighlight="@color/bodyTxt" />
+
             <TextView
                 android:id="@+id/pointstxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="POINTS:  "
-                android:textColor="@color/bodyTxt"
-                android:textColorHighlight="@color/bodyTxt"
                 android:layout_below="@id/basketBallStatstxt"
-                />
+                android:text="PPG"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt" />
             <TextView
                 android:id="@+id/pointsValuetxt"
                 android:layout_width="match_parent"
@@ -306,10 +306,10 @@
                 android:id="@+id/reboundstxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="REBOUNDS:  "
+                android:layout_below="@id/pointstxt"
+                android:text="RPG:  "
                 android:textColor="@color/bodyTxt"
-                android:textColorHighlight="@color/bodyTxt"
-                android:layout_below="@id/pointstxt"/>
+                android:textColorHighlight="@color/bodyTxt" />
             <TextView
                 android:id="@+id/reboundsValuetxt"
                 android:layout_width="match_parent"
@@ -320,32 +320,34 @@
                 android:layout_below="@id/pointsValuetxt"
                 android:textAlignment="textEnd"
                 />
+
             <TextView
                 android:id="@+id/stealstxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="STEALS:  "
+                android:layout_below="@id/reboundstxt"
+                android:text="SPG:  "
                 android:textColor="@color/bodyTxt"
-                android:textColorHighlight="@color/bodyTxt"
-                android:layout_below="@id/reboundstxt"/>
+                android:textColorHighlight="@color/bodyTxt" />
+
             <TextView
                 android:id="@+id/stealsValuetxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="10"
-                android:textColor="@color/bodyTxt"
-                android:textColorHighlight="@color/bodyTxt"
                 android:layout_below="@id/reboundsValuetxt"
+                android:text="4"
                 android:textAlignment="textEnd"
-                />
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt" />
+
             <TextView
                 android:id="@+id/assiststxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ASSISTS:  "
+                android:layout_below="@id/stealstxt"
+                android:text="APG:  "
                 android:textColor="@color/bodyTxt"
-                android:textColorHighlight="@color/bodyTxt"
-                android:layout_below="@id/stealstxt"/>
+                android:textColorHighlight="@color/bodyTxt" />
             <TextView
                 android:id="@+id/assistsValuetxt"
                 android:layout_width="match_parent"
@@ -356,41 +358,24 @@
                 android:layout_below="@id/stealsValuetxt"
                 android:textAlignment="textEnd"/>
             <TextView
-                android:id="@+id/fgmtxt"
+                android:id="@+id/blocksstxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="FGM:  "
+                android:layout_below="@id/assiststxt"
+                android:text="BPG"
                 android:textColor="@color/bodyTxt"
-                android:textColorHighlight="@color/bodyTxt"
-                android:layout_below="@id/assiststxt"/>
+                android:textColorHighlight="@color/bodyTxt" />
             <TextView
-                android:id="@+id/fgmValuetxt"
+                android:id="@+id/blocksValuetxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="7"
+                android:text="2"
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt"
                 android:layout_below="@id/assistsValuetxt"
-                android:layout_toRightOf="@id/assiststxt"
-                android:textAlignment="textEnd"/>
-            <TextView
-                android:id="@+id/fgatxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="FGA:  "
-                android:textColor="@color/bodyTxt"
-                android:textColorHighlight="@color/bodyTxt"
-                android:layout_below="@id/fgmtxt"/>
-            <TextView
-                android:id="@+id/fgaValuetxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="13"
-                android:textColor="@color/bodyTxt"
-                android:textColorHighlight="@color/bodyTxt"
-                android:layout_below="@id/fgmValuetxt"
-                android:layout_toRightOf="@id/fgatxt"
-                android:textAlignment="textEnd"/>
+                android:layout_toRightOf="@id/blocksstxt"
+                android:textAlignment="textEnd"
+                />
             <TextView
                 android:id="@+id/fgpercenttxt"
                 android:layout_width="wrap_content"
@@ -398,7 +383,7 @@
                 android:text="FG%:  "
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt"
-                android:layout_below="@id/fgatxt"/>
+                android:layout_below="@id/blocksstxt"/>
             <TextView
                 android:id="@+id/fgpercentValuetxt"
                 android:layout_width="match_parent"
@@ -406,7 +391,7 @@
                 android:text="53.0"
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt"
-                android:layout_below="@id/fgaValuetxt"
+                android:layout_below="@id/blocksValuetxt"
                 android:textAlignment="textEnd"/>
 
             <Button
