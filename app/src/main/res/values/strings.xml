@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">GYBITG</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -6,4 +6,67 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Sign in</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password </string>
+    <string name="action_sign_in">Sign in </string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_account_create">AccountCreateActivity</string>
+    <string name="first_name">First Name</string>
+    <string name="action_register">Create Account</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="create_account">Create Account</string>
+
+
+    <!-- Strings related to profile creation edit-->
+    <string name="action_save_changes_button">Save Changes</string>
+    <string name="prompt_school">School</string>
+    <string name="prompt_firstName">First Name</string>
+    <string name="prompt_lastName">Last Name</string>
+    <string name="prompt_highSchoolTeam">High School Team</string>
+    <string name="prompt_aauTeam">AAU Team</string>
+    <string name="prompt_position">Position</string>
+    <string name="prompt_pwd">Password</string>
+    <string name="prompt_class">Class</string>
+    <string name="title_create_profile">Create Profile</string>
+    <string name="back">Back</string>
+
+    <!-- Strings related to account creation edit-->
+    <string name="join_GYBITG">Join GYBITG Today!</string>
+    <string name="GYBITG_long">Get Your Butt in the Gym</string>
+
+    <!--Profile Strings -->
+    <string name="edit_button">edit</string>
+    <string name="save_button">save</string>
+    <string name="feed_label_text">Feed</string>
+    <string name="stats_label_text">Stats</string>
+    <string name="gallery_label_text">Gallery</string>
+    <string name="contact_label_text">Contact</string>
+    <string name="profile_name">Kendra Smith</string>
+    <string name="profile_position">Guard-Forward</string>
+    <string name="profile_class">Class of 2018</string>
+
+    <!-- Stats -->
+    <string name="stats_personal_header"><u>PERSONAL INFO</u></string>
+    <string name="stats_games_header">GAME STATS</string>
+    <string name="stats_add_game">ADD GAME</string>
+    <string name="minutes_played">Minutes Played:</string>
+    <string name="add_game">ADD GAME +</string>
+    <string name="enter_new_game_stats">Enter New Game Stats:</string>
+    <string name="points">Points:</string>
+    <string name="rebounds">Rebounds:</string>
+    <string name="assists">Assists:</string>
+    <string name="steals">Steals:</string>
+    <string name="blocks">Blocks:</string>
+    <string name="turnovers">Turnovers:</string>
+
 </resources>

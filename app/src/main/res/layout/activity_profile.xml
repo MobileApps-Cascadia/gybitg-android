@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="edu.cascadia.mobas.gybitg.ProfileActivity"
+    android:background="@drawable/gradient">
+
+    <!-- Login progress -->
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
+
+
+    <RelativeLayout
+        android:id="@+id/profile_header"
+        android:layout_width="match_parent"
+        android:layout_height="330dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <ImageView
+                android:id="@+id/profile_background_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/court_background_image" />
+
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="90dp"
+                app:srcCompat="@drawable/kendra" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/profile_name"
+            style="@style/profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="200dp"
+            android:text="@string/profile_name" />
+
+        <TextView
+            android:id="@+id/profile_user_position"
+            style="@style/profile_quick_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="31dp"
+            android:layout_marginBottom="68dp"
+            android:text="@string/profile_position" />
+
+        <TextView
+            android:id="@+id/position_user_class"
+            style="@style/profile_quick_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="40dp"
+            android:text="@string/profile_class" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginBottom="0dp">
+
+            <TextView
+                android:id="@+id/feed_label"
+                style="@style/profile_navigation_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="38dp"
+                android:text="@string/feed_label_text" />
+
+            <TextView
+                android:id="@+id/stats_label"
+                style="@style/profile_navigation_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="115dp"
+                android:layout_marginEnd="22dp"
+                android:layout_toStartOf="@+id/gallery_label"
+                android:text="@string/stats_label_text" />
+
+            <TextView
+                android:id="@+id/gallery_label"
+                style="@style/profile_navigation_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/feed_label"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="135dp"
+                android:layout_marginBottom="0dp"
+                android:text="@string/gallery_label_text" />
+
+            <TextView
+                android:id="@+id/contact_label"
+                style="@style/profile_navigation_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="41dp"
+                android:text="@string/contact_label_text" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+    <View
+        android:layout_height="5dp"
+        android:layout_width="match_parent"
+        android:background="@color/colorOrange"/>
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        >
+
+        <RelativeLayout
+            android:id="@+id/email_login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/personalStatstxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/stats_personal_header"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorAccent"
+                android:textColorHighlight="@color/bodyTxt" />
+
+            <Button
+                android:id="@+id/edit_stats"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:text="@string/edit_button" />
+
+            <TextView
+                android:id="@+id/schooltxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SCHOOL:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/personalStatstxt"
+                android:layout_alignParentLeft="true"
+                />
+            <TextView
+                android:id="@+id/schoolValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Danville High (Danville, In)"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/personalStatstxt"
+                android:layout_toRightOf="@id/schooltxt"
+                android:textAlignment="textEnd"/>
+
+
+       <!--     <TextView
+                android:id="@+id/schoolTeamtxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CONFERENCE:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/schooltxt"
+                />
+            <TextView
+                android:id="@+id/schoolTeamValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="KingCo"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:textAlignment="textEnd"
+                android:layout_below="@id/schoolValuetxt"
+                android:layout_toRightOf="@id/schoolTeamtxt"/>-->
+
+            <TextView
+                android:id="@+id/uaaTeamtxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AAU TEAM:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/schooltxt"/>
+
+            <TextView
+                android:id="@+id/uaaTeamValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/schoolValuetxt"
+                android:layout_toEndOf="@id/uaaTeamtxt"
+                android:text="Washington Elite"
+                android:textColor="@color/bodyTxt"
+                android:textAlignment="textEnd"
+                android:textColorHighlight="@color/bodyTxt" />
+            <TextView
+                android:id="@+id/yeartxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CLASS:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/uaaTeamtxt"/>
+            <TextView
+                android:id="@+id/yearValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Junior"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/uaaTeamValuetxt"
+                android:layout_toRightOf="@id/yeartxt"
+                android:textAlignment="textEnd"
+                />
+
+            <TextView
+                android:id="@+id/positiontxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="POSITION:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/yeartxt"/>
+            <TextView
+                android:id="@+id/positionValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Forward"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/yearValuetxt"
+                android:layout_toRightOf="@+id/positiontxt"
+                android:textAlignment="textEnd"/>
+
+            <TextView
+                android:id="@+id/basketBallStatstxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/positiontxt"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/stats_games_header"
+                android:textColor="@color/colorAccent"
+                android:textColorHighlight="@color/bodyTxt" />
+
+            <TextView
+                android:id="@+id/pointstxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/basketBallStatstxt"
+                android:text="PPG"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt" />
+            <TextView
+                android:id="@+id/pointsValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/basketBallStatstxt"
+                android:layout_toRightOf="@id/pointstxt"
+                android:textAlignment="textEnd"
+                />
+
+            <TextView
+                android:id="@+id/reboundstxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pointstxt"
+                android:text="RPG:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt" />
+            <TextView
+                android:id="@+id/reboundsValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/pointsValuetxt"
+                android:textAlignment="textEnd"
+                />
+
+            <TextView
+                android:id="@+id/stealstxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/reboundstxt"
+                android:text="SPG:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt" />
+
+            <TextView
+                android:id="@+id/stealsValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/reboundsValuetxt"
+                android:text="4"
+                android:textAlignment="textEnd"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt" />
+
+            <TextView
+                android:id="@+id/assiststxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/stealstxt"
+                android:text="APG:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt" />
+            <TextView
+                android:id="@+id/assistsValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/stealsValuetxt"
+                android:textAlignment="textEnd"/>
+            <TextView
+                android:id="@+id/blocksstxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/assiststxt"
+                android:text="BPG"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt" />
+            <TextView
+                android:id="@+id/blocksValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/assistsValuetxt"
+                android:layout_toRightOf="@id/blocksstxt"
+                android:textAlignment="textEnd"
+                />
+            <TextView
+                android:id="@+id/fgpercenttxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FG%:  "
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/blocksstxt"/>
+            <TextView
+                android:id="@+id/fgpercentValuetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="53.0"
+                android:textColor="@color/bodyTxt"
+                android:textColorHighlight="@color/bodyTxt"
+                android:layout_below="@id/blocksValuetxt"
+                android:textAlignment="textEnd"/>
+
+            <Button
+                android:id="@+id/add_game"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="111dp"
+                android:layout_marginEnd="0dp"
+                android:text="@string/stats_add_game" />
+
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>
