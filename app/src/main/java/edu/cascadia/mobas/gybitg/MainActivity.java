@@ -2,25 +2,45 @@
 
 package edu.cascadia.mobas.gybitg;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Button;
+import android.widget.EditText;
 
 import edu.cascadia.mobas.gybitg.R;
 
 
 public class MainActivity extends AppCompatActivity
         /*implements NavigationView.OnNavigationItemSelectedListener*/ {
+    //instance variables
+    //private boolean valid_info = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
-        
+        Button login_btn = (Button) findViewById(R.id.email_sign_in_button);
+        final EditText email = (EditText) findViewById(R.id.email);
+        final EditText password = (EditText) findViewById(R.id.password);
+        final Intent profile_page = new Intent(this, ProfileActivity.class);
+
+        login_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(email.getText().toString().equals("ksmith@gmail.com") && password.getText().toString().equals("Baskets97")){
+                    startActivity(profile_page);
+                }
+            }
+        });
+
+
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
        // setSupportActionBar(toolbar);
 
