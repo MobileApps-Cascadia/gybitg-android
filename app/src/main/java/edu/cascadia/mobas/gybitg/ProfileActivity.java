@@ -14,7 +14,6 @@ import edu.cascadia.mobas.gybitg.db.gybitgDatabase;
 public class ProfileActivity extends AppCompatActivity {
 
     StatDao statDao;
-    Intent stats_page;
 
     public static String TEMP_USER_ID = "ksmith0372";
 
@@ -26,6 +25,24 @@ public class ProfileActivity extends AppCompatActivity {
         // grab the Stat Data Access Object
         statDao = gybitgDatabase.getDatabase(this).statDao();
 
+        // setup reference to Add Game button
+        final Button btn_add_game = findViewById(R.id.add_game);
+
+        loadStats();
+
+        // set up OnClick listener for Add Game/Stat button
+        btn_add_game.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // set up reference to new Intent
+                        Intent stats_page = new Intent(ProfileActivity.this, StatsActivity.class);
+                        startActivity(stats_page);
+                    }
+                });
+
+    }
+    public void loadStats() {
         // reference to stats section elements
         TextView mPointsValueTextView = findViewById(R.id.pointsValuetxt);
         TextView mReboundsValueTextView = findViewById(R.id.reboundsValuetxt);
@@ -83,12 +100,6 @@ public class ProfileActivity extends AppCompatActivity {
         // calculate the average minutes played per game
         mpg = (totalMinutesPlayed/totalGames);
 
-        // setup reference to Add Game button
-        final Button btn_add_game = findViewById(R.id.add_game);
-
-        // set up reference to new Intent
-        stats_page = new Intent(this, StatsActivity.class);
-
         // display the points/rebounds/steals/assists/blocks/minutes played per game,
         // in the profile text view under the stats section on user profile
         mPointsValueTextView.setText(String.format("%.01f",ppg));
@@ -97,16 +108,6 @@ public class ProfileActivity extends AppCompatActivity {
         mStealsValueTextView.setText(String.format("%.01f",spg));
         mBlocksValueTextView.setText(String.format("%.01f",bpg));
         mMinutesPlayedValueTextView.setText(String.format("%.01f",mpg));
-
-
-        // set up OnClick listener for Add Game/Stat button
-        btn_add_game.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(stats_page);
-                    }
-                });
 
     }
 }

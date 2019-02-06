@@ -9,36 +9,24 @@
     android:background="@drawable/gradient">
     <!--tools:showIn="@layout/app_bar_main"-->
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/colorOrange"
-        android:text="@string/add_game"
-        android:textColor="@color/colorBodyText"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
         android:text="@string/enter_new_game_stats"
         android:textColor="@color/bodyTxt"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/points"
         android:textColor="@color/bodyTxt"
@@ -50,10 +38,11 @@
         android:id="@+id/spinnerPoints"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginStart="16dp"
         android:background="@color/bodyTxt"
         android:backgroundTint="@color/bodyTxt"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <Spinner
@@ -165,13 +154,13 @@
         android:id="@+id/save_game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@color/colorOrange"
         android:text="@string/save_button"
         android:textColor="@color/colorBodyText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/spinnerMinutesPlayed"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMinutesPlayed" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
