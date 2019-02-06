@@ -26,6 +26,8 @@
     <string name="forgot_password">Forgot Password?</string>
     <string name="create_account">Create Account</string>
 
+    <!-- Strings related to temporary userId -->
+    <string name="temp_user_id">ksmith0372</string>
 
     <!-- Strings related to profile creation edit-->
     <string name="action_save_changes_button">Save Changes</string>
@@ -57,7 +59,7 @@
 
     <!-- Stats -->
     <string name="stats_personal_header"><u>PERSONAL INFO</u></string>
-    <string name="stats_games_header">GAME STATS</string>
+    <string name="stats_games_header">CAREER GAME STATS</string>
     <string name="stats_add_game">ADD GAME</string>
     <string name="minutes_played">Minutes Played:</string>
     <string name="add_game">ADD GAME +</string>

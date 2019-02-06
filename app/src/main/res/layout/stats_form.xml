@@ -18,7 +18,7 @@
         android:backgroundTint="@color/colorOrange"
         android:text="@string/add_game"
         android:textColor="@color/colorBodyText"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
@@ -141,27 +141,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/turnovers"
-        android:textColor="@color/bodyTxt"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <Spinner
-        android:id="@+id/spinnerTurnovers"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:background="@color/bodyTxt"
-        android:backgroundTint="@color/bodyTxt"
-        app:layout_constraintBottom_toBottomOf="@+id/textView9"
-        app:layout_constraintEnd_toEndOf="@+id/spinnerBlocks"
-        app:layout_constraintTop_toTopOf="@+id/textView9" />
-
-    <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -169,8 +148,8 @@
         android:text="@string/minutes_played"
         android:textColor="@color/bodyTxt"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <Spinner
         android:id="@+id/spinnerMinutesPlayed"
@@ -179,7 +158,7 @@
         android:background="@color/bodyTxt"
         android:backgroundTint="@color/bodyTxt"
         app:layout_constraintBottom_toBottomOf="@+id/textView10"
-        app:layout_constraintEnd_toEndOf="@+id/spinnerTurnovers"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerBlocks"
         app:layout_constraintTop_toTopOf="@+id/textView10" />
 
     <Button
