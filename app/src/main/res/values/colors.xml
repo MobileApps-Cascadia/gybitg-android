@@ -6,14 +6,14 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorPrimary">#A5A5A5</color>
     <color name="colorGreen">#11C711</color>-->
-<!--colors on James page-->
- <color name="colorBodyText">#ffffff</color>
- <color name="colorOrange">#f7941d</color>
 
- <!--colors on Juanita's page-->
-    <color name="colorPrimary">#A5A5A5</color>
-    <color name="colorPrimaryDark">#000000</color>
+     <color name="colorBodyText">#ffffff</color>
+     <color name="colorOrange">#f7941d</color>
+    <color name="colorPrimary">#938585</color>
+    <color name="colorPrimaryDark">#312e2e</color>
     <color name="colorAccent">#F7941D</color>
+    <color name="colorBackButton">#2f3f80</color>
+
 
     //need a black to white gradient for the background
     <color name="textHeadingBtns">#F7941D</color>//orange brown

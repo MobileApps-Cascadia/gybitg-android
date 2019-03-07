@@ -1,11 +1,11 @@
-package com.cascadia.bit.gybitg_app;
+package edu.cascadia.mobas.gybitg;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+
+import edu.cascadia.mobas.gybitg.R;
+
 
 public class AccountCreateActivity extends AppCompatActivity {
 

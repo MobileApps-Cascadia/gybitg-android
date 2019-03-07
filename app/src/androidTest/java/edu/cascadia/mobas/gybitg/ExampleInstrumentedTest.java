@@ -1,4 +1,4 @@
-package com.cascadia.bit.gybitg_app;
+package edu.cascadia.mobas.gybitg;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
