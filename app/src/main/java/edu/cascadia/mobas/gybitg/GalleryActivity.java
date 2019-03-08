@@ -1,7 +1,13 @@
 //This Class will show a list of the videos the user has in thumbnails
+//checks for the camera hardware
 //Will have a add Video button that will open the camera app
+//check to see if permission was granted to read the photo file
+//Will ask the user if the app can access the video files
 //Camera app will take a video and play the video
+//Creates the file to save the video using a Simpledate for each video to be unique
 //The video will be converted to a thumbnail and added to list
+//if the device does not have a camera disable the button
+
 package edu.cascadia.mobas.gybitg;
 
 import android.Manifest;
@@ -13,6 +19,7 @@ import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +27,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -37,31 +45,27 @@ public class GalleryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery2);
         mImageView = (ImageView) findViewById(R.id.video1_thumbnail);
-        Button addVideoBtn = (Button) findViewById(R.id.add_video);
+        FloatingActionButton addVideo = findViewById(R.id.add_video);
+        //Button addVideoBtn = (Button) findViewById(R.id.add_video);
         //if the device does not have a camera disable the button
         if(!hasCamera()){
-            addVideoBtn.setEnabled(false);
+            addVideo.setEnabled(false);
         }
-       
-        addVideoBtn.setOnClickListener(new View.OnClickListener() {
+
+        addVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getPermissions();
                 dispatchTakeVideoIntent();
-
             }
         });
-
     }
 
     //Creates a new intent to open the camera app
     //Creates the file to save the video using a Simpledate for each video to be unique
-
     private void dispatchTakeVideoIntent() {
-
         Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
         if (takeVideoIntent.resolveActivity(getPackageManager()) != null) {
-
             //create the file to save the video
             // set the image file name
             //will be stored in a file in the storage camera folder if the second parameter not
@@ -81,16 +85,16 @@ public class GalleryActivity extends AppCompatActivity {
     //check to see if permission was granted to read the photo file
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        Uri videoUri =  intent.getData();
 
         //if saving image call the BitmapView's saveImage method
         //or do the rest of reading the URI of the video
-        //  }
         if (requestCode == REQUEST_VIDEO_CAPTURE && resultCode == RESULT_OK) {
             //toast that says the file of the video
             //   Toast.makeText(this, "Video has been saved to:\n" +
             // intent.getData(), Toast.LENGTH_LONG).show();
 
-            Uri videoUri =  intent.getData();
+            //Uri videoUri =  intent.getData();
             videoPath = videoUri.getPath();
             //gets the file name of the video
             String s = videoUri.getLastPathSegment();
@@ -100,8 +104,14 @@ public class GalleryActivity extends AppCompatActivity {
             TextView mtextView = (TextView) findViewById(R.id.video1_tumbnail_title);
             v.setImageBitmap(thumb);
             mtextView.setText("Your video 1");
-
         }
+        //if the cancel button was hit show the message it was canceled
+       else if(requestCode == RESULT_CANCELED){
+            Toast.makeText(this, "Video recording canceled", Toast.LENGTH_LONG).show();
+        }
+        else {
+            Toast.makeText(this, "Failed to make thumbnail", Toast.LENGTH_LONG).show();
+           }
 
    }
 
