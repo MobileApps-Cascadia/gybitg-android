@@ -172,7 +172,7 @@ android:background="@drawable/gradient">
             android:textColorHighlight="@color/bodyTxt" />
 
         <Button
-            android:id="@+id/edit_video"
+            android:id="@+id/add_video"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
             android:layout_alignParentTop="true"
