@@ -37,8 +37,13 @@ public class GalleryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery2);
         mImageView = (ImageView) findViewById(R.id.video1_thumbnail);
-        Button editVideoBtn = (Button) findViewById(R.id.add_video);
-        editVideoBtn.setOnClickListener(new View.OnClickListener() {
+        Button addVideoBtn = (Button) findViewById(R.id.add_video);
+        //if the device does not have a camera disable the button
+        if(!hasCamera()){
+            addVideoBtn.setEnabled(false);
+        }
+       
+        addVideoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getPermissions();
@@ -76,30 +81,7 @@ public class GalleryActivity extends AppCompatActivity {
     //check to see if permission was granted to read the photo file
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-      /** if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            //will show explanation of why permission
-            if (shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                //set dialog message
-                builder.setMessage(R.string.permission_rationale);
-                //add ok button to dialog
-                builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //request permission
-                        requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                                READ_IMAGE_PERMISSION_REQUEST_CODE);
-                    }
-                });
-                //display the dialog
-                builder.create().show();
-            } else {
-                //request permission
-                requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                        READ_IMAGE_PERMISSION_REQUEST_CODE);
-            }
-        } *///else {
-   // }
+
         //if saving image call the BitmapView's saveImage method
         //or do the rest of reading the URI of the video
         //  }
@@ -122,6 +104,11 @@ public class GalleryActivity extends AppCompatActivity {
         }
 
    }
+
+    //checks for the camera hardware
+    private boolean hasCamera(){
+        return (getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY));
+    }
 
     //check to see if permission was granted to read the photo file
     //Will ask the user if the app can access the video files
