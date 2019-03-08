@@ -25,6 +25,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,13 +40,15 @@ public class GalleryActivity extends AppCompatActivity {
     private static final int READ_IMAGE_PERMISSION_REQUEST_CODE = 2000;
     private ImageView mImageView;
     private String videoPath;
+    private ImageButton mImageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery2);
-        mImageView = (ImageView) findViewById(R.id.video1_thumbnail);
+        //mImageView = (ImageView) findViewById(R.id.video1_thumbnail);
         FloatingActionButton addVideo = findViewById(R.id.add_video);
+        mImageButton = findViewById(R.id.video1_imageButton);
         //Button addVideoBtn = (Button) findViewById(R.id.add_video);
         //if the device does not have a camera disable the button
         if(!hasCamera()){
@@ -57,6 +60,15 @@ public class GalleryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 getPermissions();
                 dispatchTakeVideoIntent();
+            }
+        });
+
+        //set the onClick for the imageButton
+        mImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //do something
+                mImageButton.setVisibility(View.INVISIBLE);
             }
         });
     }
@@ -100,9 +112,12 @@ public class GalleryActivity extends AppCompatActivity {
             String s = videoUri.getLastPathSegment();
             Bitmap thumb = ThumbnailUtils.createVideoThumbnail(videoUri.getPath(),
                     MediaStore.Video.Thumbnails.MINI_KIND);
-            ImageView v = (ImageView) findViewById(R.id.video1_thumbnail);
+            //ImageView v = (ImageView) findViewById(R.id.video1_thumbnail);
+            ImageButton vIB = findViewById(R.id.video1_imageButton);
             TextView mtextView = (TextView) findViewById(R.id.video1_tumbnail_title);
-            v.setImageBitmap(thumb);
+            vIB.setImageBitmap(thumb);
+            vIB.setVisibility(View.VISIBLE);
+           // v.setImageBitmap(thumb);
             mtextView.setText("Your video 1");
         }
         //if the cancel button was hit show the message it was canceled
