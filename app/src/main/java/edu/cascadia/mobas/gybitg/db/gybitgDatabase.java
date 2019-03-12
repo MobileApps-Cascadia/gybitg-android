@@ -7,9 +7,9 @@ import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 
 import edu.cascadia.mobas.gybitg.db.typeconverters.DateTypeConverter;
-import edu.cascadia.mobas.gybitg.models.Stat;
+import edu.cascadia.mobas.gybitg.models.StatEntity;
 
-@Database(entities = {Stat.class}, version = 1)
+@Database(entities = {StatEntity.class}, version = 1, exportSchema = false)
 @TypeConverters({DateTypeConverter.class})
 public abstract class gybitgDatabase extends RoomDatabase {
 

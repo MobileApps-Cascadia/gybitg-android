@@ -1,35 +1,37 @@
 package edu.cascadia.mobas.gybitg.db;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import edu.cascadia.mobas.gybitg.models.Stat;
+import edu.cascadia.mobas.gybitg.models.StatEntity;
 
 @Dao
 public interface StatDao {
 
-    @Insert
-    void insert(Stat... stats);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insert(StatEntity... stats);
 
-    @Insert
-    void insert(Stat stat);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insert(StatEntity stat);
 
     @Update
-    void update(Stat stat);
+    void update(StatEntity stat);
 
     @Delete
-    void delete(Stat stat);
+    void delete(StatEntity stat);
 
     @Query("SELECT * FROM stat_table ORDER BY date_of_entry ASC")
-    List<Stat> getAllStats();
+    LiveData<List<StatEntity>> getAllStats();
 
     @Query("SELECT * FROM stat_table WHERE user_id = :userId ORDER BY date_of_entry ASC")
-    List<Stat> getStatsByUserId(String userId);
+    List<StatEntity> getStatsByUserId(String userId);
 
     @Query("SELECT points FROM stat_table WHERE user_id = :userId")
     List<Integer> getPointsByUserId(String userId);

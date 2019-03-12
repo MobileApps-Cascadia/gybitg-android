@@ -1,29 +1,27 @@
 package edu.cascadia.mobas.gybitg;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteConstraintException;
-import android.support.v7.app.AppCompatActivity;
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.content.Intent;
 import android.widget.Toast;
 
 import java.util.Date;
 
-import edu.cascadia.mobas.gybitg.R;
 import edu.cascadia.mobas.gybitg.db.StatDao;
-import edu.cascadia.mobas.gybitg.models.Stat;
 import edu.cascadia.mobas.gybitg.db.gybitgDatabase;
+import edu.cascadia.mobas.gybitg.models.StatEntity;
+
+import static edu.cascadia.mobas.gybitg.utilities.Constants.TEMP_USER_ID;
 
 public class StatsActivity extends AppCompatActivity {
 
     private Intent mProfilePage;
     private StatDao statDao;
-    public static String TEMP_USER_ID = "ksmith0372";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +74,7 @@ public class StatsActivity extends AppCompatActivity {
                         int blocks = Integer.parseInt(mBlocks.getSelectedItem().toString());
                         int minutesPlayed = Integer.parseInt(mMinutesPlayed.getSelectedItem().toString());
 
-                        Stat newStat = new Stat();
+                        StatEntity newStat = new StatEntity();
 
                         newStat.setPoints(points);
                         newStat.setRebounds(rebounds);

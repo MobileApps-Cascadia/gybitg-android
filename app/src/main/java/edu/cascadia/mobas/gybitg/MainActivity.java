@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(email.getText().toString().equals("ksmith@gmail.com") && password.getText().toString().equals("password")){
+                if(email.getText().toString().equals("ksmith@gmail.com") && password.getText().toString().equals("Baskets97")){
                     startActivity(profile_page);
                 }
             }
