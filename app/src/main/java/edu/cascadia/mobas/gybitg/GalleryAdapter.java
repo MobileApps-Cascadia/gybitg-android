@@ -20,6 +20,7 @@ import java.util.List;
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHolder>{
     private List<Uri> videoPaths;
     private  Context mContext;
+    ImageButton mImageButton;
 
     public GalleryAdapter(List<Uri> videoPaths, Context mContext) {
         this.videoPaths = videoPaths;
@@ -34,7 +35,18 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
        // View view = inflater.inflate(R.layout.gallery_list_item, viewGroup, false);
        // ViewHolder myViewHolder = new ViewHolder(view);
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.gallery_list_item,viewGroup,false);
+        //set the onClick for the imageButton
+        mImageButton = view.findViewById(R.id.video1_imageButton);
+        mImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //do something
+                mImageButton.setVisibility(View.INVISIBLE);
+            }
+        });
+
         return  (new ViewHolder(view));//myViewHolder;
+
     }
 
     //called each time a row is refreshed with data object
