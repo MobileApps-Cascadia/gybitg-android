@@ -23,6 +23,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -32,15 +35,21 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import static android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO;
 public class GalleryActivity extends AppCompatActivity {
 
     static final int REQUEST_VIDEO_CAPTURE = 1991;
     private static final int READ_IMAGE_PERMISSION_REQUEST_CODE = 2000;
-    private ImageView mImageView;
-    private String videoPath;
+   // private ImageView mImageView;
     private ImageButton mImageButton;
+    private GalleryAdapter mGalleryAdapter;
+    private RecyclerView mRecyclerView;
+
+    private List<Uri> videoUris = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +57,9 @@ public class GalleryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gallery2);
         //mImageView = (ImageView) findViewById(R.id.video1_thumbnail);
         FloatingActionButton addVideo = findViewById(R.id.add_video);
-        mImageButton = findViewById(R.id.video1_imageButton);
+        //mImageButton = findViewById(R.id.video1_imageButton);
+        mRecyclerView = findViewById(R.id.gallery_recyclerView);
+        recyclerInit();
         //Button addVideoBtn = (Button) findViewById(R.id.add_video);
         //if the device does not have a camera disable the button
         if(!hasCamera()){
@@ -64,13 +75,15 @@ public class GalleryActivity extends AppCompatActivity {
         });
 
         //set the onClick for the imageButton
-        mImageButton.setOnClickListener(new View.OnClickListener() {
+      /*  mImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //do something
                 mImageButton.setVisibility(View.INVISIBLE);
             }
-        });
+        });*/
+
+
     }
 
     //Creates a new intent to open the camera app
@@ -107,10 +120,12 @@ public class GalleryActivity extends AppCompatActivity {
             // intent.getData(), Toast.LENGTH_LONG).show();
 
             //Uri videoUri =  intent.getData();
-            videoPath = videoUri.getPath();
             //gets the file name of the video
             String s = videoUri.getLastPathSegment();
-            Bitmap thumb = ThumbnailUtils.createVideoThumbnail(videoUri.getPath(),
+//add the Uri to the List
+            videoUris.add(videoUri);
+
+          /**  Bitmap thumb = ThumbnailUtils.createVideoThumbnail(videoUri.getPath(),
                     MediaStore.Video.Thumbnails.MINI_KIND);
             //ImageView v = (ImageView) findViewById(R.id.video1_thumbnail);
             ImageButton vIB = findViewById(R.id.video1_imageButton);
@@ -118,7 +133,7 @@ public class GalleryActivity extends AppCompatActivity {
             vIB.setImageBitmap(thumb);
             vIB.setVisibility(View.VISIBLE);
            // v.setImageBitmap(thumb);
-            mtextView.setText("Your video 1");
+            mtextView.setText("Your video 1");*/
         }
         //if the cancel button was hit show the message it was canceled
        else if(requestCode == RESULT_CANCELED){
@@ -162,5 +177,18 @@ public class GalleryActivity extends AppCompatActivity {
         }
         } //else {
        // }
+   }
+
+   //Initializes the RecyclerView
+   //sets the layoutmanager to a linearLayout
+   private void recyclerInit(){
+       //to make sure every item in recyclervieW has the same height
+       mRecyclerView.setHasFixedSize(true);
+       //create a layout manager and set the recycler view to the linearlayout
+       mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+       mGalleryAdapter = new GalleryAdapter(videoUris, this);
+       //sets a divider between items
+       mRecyclerView.addItemDecoration(new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL));
+       mRecyclerView.setAdapter(mGalleryAdapter);
    }
 }
