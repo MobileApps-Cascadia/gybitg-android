@@ -69,4 +69,8 @@
     <string name="blocks">Blocks:</string>
     <string name="turnovers">Turnovers:</string>
 
+    <!-- Gallery -->
+    <string name="add_new_video">Add Video</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
