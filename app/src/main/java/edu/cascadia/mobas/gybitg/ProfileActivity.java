@@ -14,6 +14,8 @@ import edu.cascadia.mobas.gybitg.R;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    //Fragment Transaction Manager
+    FragmentTransaction transaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +43,18 @@ public class ProfileActivity extends AppCompatActivity {
             //Feed Fragment
             final FeedFragment feed = new FeedFragment();
 
-            //Start the app off with
+
+
+
+
+            //Start the app off with the profile
             getSupportFragmentManager().beginTransaction().add(R.id.profile_fragment_container, stats).commit();
 
-            //Fragment Transaction Manager
-            final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
             gallery_tab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    transaction = getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.profile_fragment_container, gallery);
                     transaction.addToBackStack(null);
                     transaction.commit();
@@ -59,6 +64,7 @@ public class ProfileActivity extends AppCompatActivity {
             stats_tab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    transaction = getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.profile_fragment_container, stats);
                     transaction.addToBackStack(null);
                     transaction.commit();
@@ -68,6 +74,7 @@ public class ProfileActivity extends AppCompatActivity {
             feed_tab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    transaction = getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.profile_fragment_container, feed);
                     transaction.addToBackStack(null);
                     transaction.commit();
@@ -77,6 +84,7 @@ public class ProfileActivity extends AppCompatActivity {
             contact_tab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    transaction = getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.profile_fragment_container, contact);
                     transaction.addToBackStack(null);
                     transaction.commit();
