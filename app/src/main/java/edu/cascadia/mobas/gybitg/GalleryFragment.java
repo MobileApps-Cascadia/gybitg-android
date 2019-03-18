@@ -1,18 +1,43 @@
 package edu.cascadia.mobas.gybitg;
 
+import android.Manifest;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import edu.cascadia.mobas.gybitg.viewmodel.GalleryViewModel;
+
+import static android.app.Activity.RESULT_CANCELED;
+import static android.app.Activity.RESULT_OK;
 
 
 /**
@@ -38,8 +63,12 @@ public class GalleryFragment extends Fragment {
     //RecyclerView Variables
     RecyclerView galleryRecyclerView;
     RecyclerView.Adapter galleryAdapter;
-    RecyclerView.LayoutManager galleryLayoutManager;
-    private List<VideoUpload> videolistings  = new ArrayList<>();
+    //  RecyclerView.LayoutManager galleryLayoutManager;
+    //private List<VideoUpload> videolistings  = new ArrayList<>();
+    static final int REQUEST_VIDEO_CAPTURE = 1991;
+    private static final int READ_IMAGE_PERMISSION_REQUEST_CODE = 2000;
+    private ImageButton mImageButton;
+    private GalleryViewModel mGalleryViewModel;
 
     public GalleryFragment() {
         // Required empty public constructor
@@ -78,9 +107,12 @@ public class GalleryFragment extends Fragment {
         // Inflate the layout for this fragment in a rootView variable for the recyclerView to utilize
         View rootView = inflater.inflate(R.layout.fragment_gallery, container, false);
         galleryRecyclerView = (RecyclerView) rootView.findViewById(R.id.gallery_recycler_view);
-
+        viewModelInit();
+        recyclerInit();
+        //call this if the user is a student to access videos on device
+        getPermissions();
         //Only used because content inside the recyclerView will stay consistent and not change the layout.
-        galleryRecyclerView.hasFixedSize();
+      /*  galleryRecyclerView.hasFixedSize();
 
         //Layout manager
         galleryLayoutManager = new LinearLayoutManager(getContext());
@@ -89,15 +121,50 @@ public class GalleryFragment extends Fragment {
         //Data adapter
         galleryAdapter = new GalleryAdapter(videolistings);
         galleryRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        galleryRecyclerView.setAdapter(galleryAdapter);
+        galleryRecyclerView.setAdapter(galleryAdapter);*/
+
         testData();
+        FloatingActionButton addVideo = rootView.findViewById(R.id.add_video);
+        if(!hasCamera()){
+            addVideo.setEnabled(false);
+        }
+
+        addVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //getPermissions();
+                dispatchTakeVideoIntent();
+            }
+        });
 
         return rootView;
     }
 
+    //Purpose: To intialize the GalleryViewModel
+    //ViewModelProviders class handles the instantiation and that is how the
+    //application component is passed in in the constructor in the ViewModel class
+    //set the observer
+    private void viewModelInit() {
+        mGalleryViewModel = ViewModelProviders.of(this).get(GalleryViewModel.class);
+        //if Using liveData use instead of mGalleryViewModel = ViewModelProviders.of(this).get(GalleryViewModel.class);
+        /**  mGalleryViewModel.mVideoUpload.observe(this, new Observer<List<VideoUpload>>() {
+        @Override
+        public void onChanged(@Nullable List<VideoUpload> videoUploads) {
+
+        galleryAdapter = new GalleryAdapter(videoUploads, getActivity());
+        //  mImageButton.setImageBitmap();
+
+
+        }
+        });*/
+
+    }
+
+
+
     private void testData(){
         //VideoUpload vid = new VideoUpload("Free Throws", );
-       // videolistings.add(vid);
+        // videolistings.add(vid);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -138,5 +205,146 @@ public class GalleryFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
 
+    }
+
+    //Initializes the RecyclerView
+    //sets the Layoutmanager to a LinearLayout
+    //Only used because content inside the recyclerView will stay consistent and not change the layout.
+    //creates a layout manager and set the recycler view to the linearlayout
+    //sets the adapter list to the viewmodel list
+    private void recyclerInit(){
+        galleryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        //sets a divider between items
+        //mRecyclerView.addItemDecoration(new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL));
+        galleryRecyclerView.hasFixedSize();
+        //Data adapter
+        galleryAdapter = new GalleryAdapter(mGalleryViewModel.mVideoUpload, getContext());   //(videolistings, getContext());
+        //if using LiveData instead of  galleryAdapter = new GalleryAdapter(mGalleryViewModel.mVideoUpload, getContext());
+        //galleryAdapter = new GalleryAdapter(mGalleryViewModel.mVideoUpload.getValue(), getContext());
+        galleryRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        //if using liveData do this in the observe in Viewmodelinit
+        galleryRecyclerView.setAdapter(galleryAdapter);
+    }
+    //checks for the camera hardware
+    private boolean hasCamera(){
+        return (getContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY));
+    }
+
+    //check to see if permission was granted to read the photo file
+    //Will ask the user if the app can access the video files
+    public void getPermissions(){
+        if (getActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            //will show explanation of why permission
+            if (shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                //set dialog message
+                builder.setMessage(R.string.permission_rationale);
+                //add ok button to dialog
+                builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //request permission
+                        requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                                READ_IMAGE_PERMISSION_REQUEST_CODE);
+                    }
+                });
+                //display the dialog
+                builder.create().show();
+            } else {
+                //request permission
+                requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        READ_IMAGE_PERMISSION_REQUEST_CODE);
+            }
+        }
+
+    }
+
+    //Creates a new intent to open the camera app
+    //Creates the file to save the video using a Simpledate for each video to be unique
+    private void dispatchTakeVideoIntent() {
+        Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        if (takeVideoIntent.resolveActivity(getContext().getPackageManager()) != null) {
+            //create the file to save the video
+            // set the image file name
+            //will be stored in a file in the storage camera folder if the second parameter not
+            String fileName = new SimpleDateFormat("yyyyMMddhhmm'.mp4'").format(new Date());
+            File mediaFile = new
+                    File(Environment.getExternalStorageDirectory().getAbsolutePath()
+                    + "/myvideo" + fileName);
+
+            Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+            Uri mvideoUri = Uri.fromFile(mediaFile);
+
+            takeVideoIntent.putExtra(MediaStore.EXTRA_OUTPUT, mvideoUri);
+            startActivityForResult(takeVideoIntent, REQUEST_VIDEO_CAPTURE);
+        }
+    }
+
+    //When the Activity end it returns a result that is the video
+    //check to see if permission was granted to read the photo file
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        Uri videoUri =  intent.getData();
+
+        //if saving image call the BitmapView's saveImage method
+        //or do the rest of reading the URI of the video
+        if (requestCode == REQUEST_VIDEO_CAPTURE && resultCode == RESULT_OK) {
+            //toast that says the file of the video
+            /**Toast.makeText(getActivity(), "Video has been saved to:\n" +
+             intent.getData(), Toast.LENGTH_LONG).show();*/
+
+
+            //Uri videoUri =  intent.getData();
+            //gets the file name of the video
+            String s = videoUri.getLastPathSegment();
+//add the Uri to the List
+            //videoUris.add(videoUri);
+            //make a new video and set the URI and title
+            //add the new video with the Uri
+           /* *if (videoUri != null) {
+                VideoUpload v = new VideoUpload();
+                v.setmUri(videoUri);
+                v.SetTitle(videoUri.getLastPathSegment());
+                //videolistings.add(v);
+                //adds the new Video to the viewmodel
+                mGalleryViewModel.insertVideoUpload(v);
+                Toast.makeText(getActivity(), "Video has been saved", Toast.LENGTH_LONG).show();
+            }*/
+            /**  Bitmap thumb = ThumbnailUtils.createVideoThumbnail(videoUri.getPath(),
+             MediaStore.Video.Thumbnails.MINI_KIND);
+             //ImageView v = (ImageView) findViewById(R.id.video1_thumbnail);
+             ImageButton vIB = findViewById(R.id.video1_imageButton);
+             TextView mtextView = (TextView) findViewById(R.id.video1_tumbnail_title);
+             vIB.setImageBitmap(thumb);
+             vIB.setVisibility(View.VISIBLE);
+             // v.setImageBitmap(thumb);
+             mtextView.setText("Your video 1");*/
+        }
+        //if the cancel button was hit show the message it was canceled
+        else if(requestCode == RESULT_CANCELED){
+            Toast.makeText(getActivity(), "Video recording canceled", Toast.LENGTH_LONG).show();
+        }
+        else {
+            Toast.makeText(getActivity(), "Failed to make thumbnail", Toast.LENGTH_LONG).show();
+            // GalleryViewModel   mGalleryViewModel = ViewModelProviders.of(GalleryFragment.newInstance("","")).get(GalleryViewModel.class);
+            //testing mGalleryViewModel.deleteVideoUploads
+            mGalleryViewModel.deleteVideoUploads();
+        }
+
+    }
+
+    //Purpose: To turn the video Uri into a string path then converts it into a thumbnail
+    //Precondition: There is a non-null Uri
+    //Postcondtion: Returns the Bitmap thumbnail of the video
+    private  Bitmap convertUriTothumbnail (Uri uri){
+        if(uri != null) {
+            String path = uri.getPath();
+            Bitmap thumb = ThumbnailUtils.createVideoThumbnail(path,
+                    MediaStore.Video.Thumbnails.MINI_KIND);
+            return thumb;
+        }
+        else {
+            return null;
+        }
     }
 }
