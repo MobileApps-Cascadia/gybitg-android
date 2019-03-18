@@ -31,7 +31,7 @@ public interface StatDao {
     LiveData<List<StatEntity>> getAllStats();
 
     @Query("SELECT * FROM stat_table WHERE user_id = :userId ORDER BY date_of_entry ASC")
-    List<StatEntity> getStatsByUserId(String userId);
+    LiveData<List<StatEntity>> getAllStatsByUserId(String userId);
 
     @Query("SELECT points FROM stat_table WHERE user_id = :userId")
     List<Integer> getPointsByUserId(String userId);

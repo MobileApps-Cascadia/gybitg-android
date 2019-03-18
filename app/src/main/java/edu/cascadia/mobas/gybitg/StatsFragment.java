@@ -1,14 +1,23 @@
 package edu.cascadia.mobas.gybitg;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.databinding.DataBindingUtil;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+import edu.cascadia.mobas.gybitg.viewmodel.StatsFragmentViewModel;
+import edu.cascadia.mobas.gybitg.databinding.FragmentStatsBinding;
 
 
 /**
@@ -30,6 +39,9 @@ public class StatsFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    // Create reference of StatFragmentViewModel
+    private StatsFragmentViewModel mFragmentViewModel;
 
     public StatsFragment() {
         // Required empty public constructor
@@ -62,11 +74,30 @@ public class StatsFragment extends Fragment {
         }
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+
+        //Create a new binding using DataBindingUtil
+        FragmentStatsBinding binding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_stats, container, false);
+
+        // Initialize the view
+        View view = binding.getRoot();
+
+        // Initialize the new StatsFragmentViewModel
+        mFragmentViewModel = new StatsFragmentViewModel(this.getActivity().getApplication());
+
+        // Set binding ViewModel and LifecycleOwner
+        binding.setViewModel(mFragmentViewModel);
+        binding.setLifecycleOwner(this);
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_stats, container, false);
+        //return inflater.inflate(R.layout.fragment_stats, container, false);
+
+        return  view;
 
     }
 
@@ -87,6 +118,9 @@ public class StatsFragment extends Fragment {
                         startActivity(stats_page);
                     }
                 });
+
+        // Load the stats into the view
+        loadStats();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -101,10 +135,17 @@ public class StatsFragment extends Fragment {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
+
+            loadStats();
         } /*else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         } */
+    }
+
+    // Load the Athlete career average stats
+    private void loadStats() {
+        mFragmentViewModel.loadStats();
     }
 
     @Override
