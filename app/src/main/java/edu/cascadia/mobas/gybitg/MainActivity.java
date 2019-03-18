@@ -26,19 +26,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
-        Button login_btn = (Button) findViewById(R.id.email_sign_in_button);
-        final EditText email = (EditText) findViewById(R.id.email);
-        final EditText password = (EditText) findViewById(R.id.password);
-        final Intent profile_page = new Intent(this, ProfileActivity.class);
 
-        login_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(email.getText().toString().equals("ksmith@gmail.com") && password.getText().toString().equals("Baskets97")){
-                    startActivity(profile_page);
-                }
-            }
-        });
 
 
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
