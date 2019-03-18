@@ -7,6 +7,14 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />-->
 
+    <!--by req false, play store will enable download to phone without camera
+  but have to check for the availability of the camera at
+  runtime by calling hasSystemFeature(PackageManager.FEATURE_CAMERA).
+  If a camera is not available, then disable your camera features.
+ needs permission to read external storage for getting the video-->
+    <uses-feature android:name="android.hardware.camera2" android:required="false"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

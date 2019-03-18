@@ -63,10 +63,10 @@ public class GalleryFragment extends Fragment {
     //RecyclerView Variables
     RecyclerView galleryRecyclerView;
     RecyclerView.Adapter galleryAdapter;
-    //  RecyclerView.LayoutManager galleryLayoutManager;
-    //private List<VideoUpload> videolistings  = new ArrayList<>();
+   //request codes
     static final int REQUEST_VIDEO_CAPTURE = 1991;
     private static final int READ_IMAGE_PERMISSION_REQUEST_CODE = 2000;
+
     private ImageButton mImageButton;
     private GalleryViewModel mGalleryViewModel;
 
@@ -111,18 +111,6 @@ public class GalleryFragment extends Fragment {
         recyclerInit();
         //call this if the user is a student to access videos on device
         getPermissions();
-        //Only used because content inside the recyclerView will stay consistent and not change the layout.
-      /*  galleryRecyclerView.hasFixedSize();
-
-        //Layout manager
-        galleryLayoutManager = new LinearLayoutManager(getContext());
-        galleryRecyclerView.setLayoutManager(galleryLayoutManager);
-
-        //Data adapter
-        galleryAdapter = new GalleryAdapter(videolistings);
-        galleryRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        galleryRecyclerView.setAdapter(galleryAdapter);*/
-
         testData();
         FloatingActionButton addVideo = rootView.findViewById(R.id.add_video);
         if(!hasCamera()){
@@ -153,13 +141,10 @@ public class GalleryFragment extends Fragment {
 
         galleryAdapter = new GalleryAdapter(videoUploads, getActivity());
         //  mImageButton.setImageBitmap();
-
-
         }
         });*/
 
     }
-
 
 
     private void testData(){
@@ -214,11 +199,9 @@ public class GalleryFragment extends Fragment {
     //sets the adapter list to the viewmodel list
     private void recyclerInit(){
         galleryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        //sets a divider between items
-        //mRecyclerView.addItemDecoration(new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL));
         galleryRecyclerView.hasFixedSize();
         //Data adapter
-        galleryAdapter = new GalleryAdapter(mGalleryViewModel.mVideoUpload, getContext());   //(videolistings, getContext());
+        galleryAdapter = new GalleryAdapter(mGalleryViewModel.mVideoUpload, getContext());
         //if using LiveData instead of  galleryAdapter = new GalleryAdapter(mGalleryViewModel.mVideoUpload, getContext());
         //galleryAdapter = new GalleryAdapter(mGalleryViewModel.mVideoUpload.getValue(), getContext());
         galleryRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -261,12 +244,13 @@ public class GalleryFragment extends Fragment {
 
     //Creates a new intent to open the camera app
     //Creates the file to save the video using a Simpledate for each video to be unique
+    //create the file to save the video
+    // set the image file name
+    //will be stored in a file in the storage camera folder if the second parameter not
     private void dispatchTakeVideoIntent() {
         Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
         if (takeVideoIntent.resolveActivity(getContext().getPackageManager()) != null) {
-            //create the file to save the video
-            // set the image file name
-            //will be stored in a file in the storage camera folder if the second parameter not
+
             String fileName = new SimpleDateFormat("yyyyMMddhhmm'.mp4'").format(new Date());
             File mediaFile = new
                     File(Environment.getExternalStorageDirectory().getAbsolutePath()
@@ -282,53 +266,31 @@ public class GalleryFragment extends Fragment {
 
     //When the Activity end it returns a result that is the video
     //check to see if permission was granted to read the photo file
+    //toast that says the file of the video
+    //make a new video and set the URI and title
+    //add the new video with the Uri
+    //adds the new Video to the viewmodel
+    //if the cancel button was hit show the message it was canceled
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         Uri videoUri =  intent.getData();
-
-        //if saving image call the BitmapView's saveImage method
-        //or do the rest of reading the URI of the video
         if (requestCode == REQUEST_VIDEO_CAPTURE && resultCode == RESULT_OK) {
-            //toast that says the file of the video
-            /**Toast.makeText(getActivity(), "Video has been saved to:\n" +
-             intent.getData(), Toast.LENGTH_LONG).show();*/
-
-
-            //Uri videoUri =  intent.getData();
             //gets the file name of the video
             String s = videoUri.getLastPathSegment();
-//add the Uri to the List
-            //videoUris.add(videoUri);
-            //make a new video and set the URI and title
-            //add the new video with the Uri
-           /* *if (videoUri != null) {
+
+           if (videoUri != null) {
                 VideoUpload v = new VideoUpload();
                 v.setmUri(videoUri);
                 v.SetTitle(videoUri.getLastPathSegment());
-                //videolistings.add(v);
-                //adds the new Video to the viewmodel
                 mGalleryViewModel.insertVideoUpload(v);
                 Toast.makeText(getActivity(), "Video has been saved", Toast.LENGTH_LONG).show();
-            }*/
-            /**  Bitmap thumb = ThumbnailUtils.createVideoThumbnail(videoUri.getPath(),
-             MediaStore.Video.Thumbnails.MINI_KIND);
-             //ImageView v = (ImageView) findViewById(R.id.video1_thumbnail);
-             ImageButton vIB = findViewById(R.id.video1_imageButton);
-             TextView mtextView = (TextView) findViewById(R.id.video1_tumbnail_title);
-             vIB.setImageBitmap(thumb);
-             vIB.setVisibility(View.VISIBLE);
-             // v.setImageBitmap(thumb);
-             mtextView.setText("Your video 1");*/
+            }
+
         }
         //if the cancel button was hit show the message it was canceled
-        else if(requestCode == RESULT_CANCELED){
-            Toast.makeText(getActivity(), "Video recording canceled", Toast.LENGTH_LONG).show();
-        }
         else {
             Toast.makeText(getActivity(), "Failed to make thumbnail", Toast.LENGTH_LONG).show();
-            // GalleryViewModel   mGalleryViewModel = ViewModelProviders.of(GalleryFragment.newInstance("","")).get(GalleryViewModel.class);
-            //testing mGalleryViewModel.deleteVideoUploads
-            mGalleryViewModel.deleteVideoUploads();
+
         }
 
     }
