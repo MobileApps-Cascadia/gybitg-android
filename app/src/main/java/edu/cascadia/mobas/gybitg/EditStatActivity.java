@@ -42,7 +42,6 @@ public class EditStatActivity extends AppCompatActivity {
 
     private EditText ePoints, eRebounds, eAssists, eSteals, eBlocks, eMinutesPlayed;
 
-    @Nullable
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,13 +56,12 @@ public class EditStatActivity extends AppCompatActivity {
         eSteals = findViewById(R.id.editText_steals);
         eBlocks = findViewById(R.id.editText_blocks);
         eMinutesPlayed = findViewById(R.id.editText_minutesPlayed);
-        
-        initViewModel();
 
         if(savedInstanceState != null) {
             mEditing = savedInstanceState.getBoolean(EDITING_KEY);
         }
 
+        initViewModel();
 
         FloatingActionButton fab = findViewById(R.id.fab_save_game);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +93,6 @@ public class EditStatActivity extends AppCompatActivity {
         if (extras == null) {
             setTitle(R.string.new_game_stat);
             mNewStat = true;
-            mEditing = false;
         } else {
             setTitle(R.string.edit_game_stat);
             int statId = extras.getInt(STAT_ID_KEY);
