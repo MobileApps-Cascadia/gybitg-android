@@ -59,8 +59,6 @@ public class EditStatActivity extends AppCompatActivity {
 
         if(savedInstanceState != null) {
             mEditing = savedInstanceState.getBoolean(EDITING_KEY);
-        } else {
-            mEditing = true;
         }
 
         initViewModel();
