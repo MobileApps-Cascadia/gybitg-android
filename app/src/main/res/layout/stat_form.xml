@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="edu.cascadia.mobas.gybitg.viewmodel.EditStatViewModel" />
+    </data>
+
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:background="@drawable/gradient"
+    tools:context=".EditStatActivity"
+    tools:showIn="@layout/activity_edit_stat">
+
+    <TextView
+        android:id="@+id/label_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/enter_new_game_stats"
+        android:textColor="@color/bodyTxt"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/label_points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/points"
+        android:textColor="@color/bodyTxt"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/label_heading"
+        app:layout_constraintTop_toBottomOf="@+id/label_heading" />
+
+
+    <EditText
+        android:id="@+id/editText_points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:hint="@string/edit_points"
+        android:inputType="number"
+        android:textColor="@color/bodyTxt"
+        app:layout_constraintBottom_toBottomOf="@+id/label_points"
+        app:layout_constraintStart_toEndOf="@+id/label_heading" />
+
+    <TextView
+        android:id="@+id/label_rebounds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/rebounds"
+        android:textColor="@color/bodyTxt"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/label_points"
+        app:layout_constraintTop_toBottomOf="@+id/label_points" />
+
+
+    <EditText
+        android:id="@+id/editText_rebounds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:hint="@string/edit_rebounds"
+        android:inputType="number"
+        android:textColor="@color/bodyTxt"
+        app:layout_constraintBottom_toBottomOf="@+id/label_rebounds"
+        app:layout_constraintStart_toEndOf="@+id/label_heading" />
+
+    <TextView
+        android:id="@+id/label_assists"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/assists"
+        android:textColor="@color/bodyTxt"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/label_rebounds"
+        app:layout_constraintTop_toBottomOf="@+id/label_rebounds" />
+
+
+    <EditText
+        android:id="@+id/editText_assists"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:hint="@string/edit_assists"
+        android:inputType="number"
+        android:textColor="@color/bodyTxt"
+        app:layout_constraintBottom_toBottomOf="@+id/label_assists"
+        app:layout_constraintStart_toEndOf="@+id/label_heading" />
+
+    <TextView
+        android:id="@+id/label_steals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/steals"
+        android:textColor="@color/bodyTxt"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/label_assists"
+        app:layout_constraintTop_toBottomOf="@+id/label_assists" />
+
+
+    <EditText
+        android:id="@+id/editText_steals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:hint="@string/edit_steals"
+        android:inputType="number"
+        android:textColor="@color/bodyTxt"
+        app:layout_constraintBottom_toBottomOf="@+id/label_steals"
+        app:layout_constraintStart_toEndOf="@+id/label_heading" />
+
+    <TextView
+        android:id="@+id/label_blocks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/blocks"
+        android:textColor="@color/bodyTxt"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/label_steals"
+        app:layout_constraintTop_toBottomOf="@+id/label_steals" />
+
+
+    <EditText
+        android:id="@+id/editText_blocks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:hint="@string/edit_blocks"
+        android:inputType="number"
+        android:textColor="@color/bodyTxt"
+        app:layout_constraintBottom_toBottomOf="@+id/label_blocks"
+        app:layout_constraintStart_toEndOf="@+id/label_heading" />
+
+    <TextView
+        android:id="@+id/label_minutes_played"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/minutes_played"
+        android:textColor="@color/bodyTxt"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/label_blocks"
+        app:layout_constraintTop_toBottomOf="@+id/label_blocks" />
+
+    <EditText
+        android:id="@+id/editText_minutesPlayed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:hint="@string/edit_minutes_played"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/label_minutes_played"
+        app:layout_constraintStart_toEndOf="@+id/label_heading"
+        android:textColor="@color/bodyTxt" />
+
+
+    <!--<Button-->
+        <!--android:id="@+id/save_game"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="32dp"-->
+        <!--android:layout_marginTop="32dp"-->
+        <!--android:backgroundTint="@color/colorOrange"-->
+        <!--android:text="@string/save_button"-->
+        <!--android:textColor="@color/colorBodyText"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/spinnerMinutesPlayed"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/spinnerMinutesPlayed" />-->
+
+</android.support.constraint.ConstraintLayout>
+</layout>
