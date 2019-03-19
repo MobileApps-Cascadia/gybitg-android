@@ -29,6 +29,7 @@ public class AppRepository {
 
     private AppRepository(Context context) {
         mDb = gybitgDatabase.getDatabase(context);
+        mStats = getAllStatsByUserId(TEMP_USER_ID);
     }
 
     public LiveData<List<StatEntity>> getAllStatsByUserId(String userId) {

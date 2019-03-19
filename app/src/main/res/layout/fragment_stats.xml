@@ -272,7 +272,7 @@
                 android:textAlignment="textEnd"/>
 
             <Button
-                android:id="@+id/view_history"
+                android:id="@+id/btn_view_history"
                 android:layout_width="wrap_content"
                 android:layout_height="38dp"
                 android:layout_marginTop="111dp"

@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 
 import edu.cascadia.mobas.gybitg.viewmodel.StatsFragmentViewModel;
 import edu.cascadia.mobas.gybitg.databinding.FragmentStatsBinding;
@@ -59,6 +61,7 @@ public class StatsFragment extends Fragment {
     public static StatsFragment newInstance(String param1, String param2) {
         StatsFragment fragment = new StatsFragment();
         Bundle args = new Bundle();
+
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
@@ -73,6 +76,7 @@ public class StatsFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
 
     @Nullable
     @Override
@@ -94,30 +98,44 @@ public class StatsFragment extends Fragment {
         binding.setViewModel(mFragmentViewModel);
         binding.setLifecycleOwner(this);
 
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_stats, container, false);
-
         return  view;
-
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        // setup reference to Add Game button
+        // setup reference and initialize the Add Game button
         final Button btn_add_game = view.findViewById(R.id.add_game);
 
-        // set up reference to new Intent
-        final Intent stats_page = new Intent(getActivity(), StatsActivity.class);
+        // reference to the view stat history button
+        final Button btn_view_history = view.findViewById(R.id.btn_view_history);
+        final StatsHistoryFragment statsHistoryFragment = new StatsHistoryFragment();
+
 
         // set up OnClick listener for Add Game button
         btn_add_game.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(stats_page);
+                        // set up reference to new Intent
+                        final Intent editStat = new Intent(getActivity(), StatsActivity.class);
+                        startActivity(editStat);
                     }
                 });
+
+        // setup OnClick listener for View History button
+        btn_view_history.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        assert getFragmentManager() != null;
+                        final FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        ft.replace(R.id.profile_fragment_container, statsHistoryFragment);
+                        ft.addToBackStack(null);
+                        ft.commit();
+                    }
+                }
+        );
 
         // Load the stats into the view
         loadStats();

@@ -35,6 +35,8 @@ public class ProfileActivity extends AppCompatActivity {
 
             //Stats Fragment
             final StatsFragment stats = new StatsFragment();
+            // Stats History Fragment
+            final StatsHistoryFragment statsHistory = new StatsHistoryFragment();
 
             //Gallery Fragment
             final GalleryFragment gallery = new GalleryFragment();
@@ -70,6 +72,7 @@ public class ProfileActivity extends AppCompatActivity {
                     transaction.commit();
                 }
             });
+
 
             feed_tab.setOnClickListener(new View.OnClickListener() {
                 @Override
