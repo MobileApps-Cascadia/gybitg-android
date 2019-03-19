@@ -34,6 +34,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -53,6 +54,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import edu.cascadia.mobas.gybitg.viewmodel.GalleryViewModel;
 
@@ -122,7 +124,7 @@ public class GalleryFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment in a rootView variable for the recyclerView to utilize
         View rootView = inflater.inflate(R.layout.fragment_gallery, container, false);
@@ -230,7 +232,7 @@ public class GalleryFragment extends Fragment {
     }
     //checks for the camera hardware
     private boolean hasCamera(){
-        return (getContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY));
+        return (Objects.requireNonNull(getContext()).getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY));
     }
 
     //Purpose: to check to see if permission was granted to read the photo file
@@ -238,10 +240,10 @@ public class GalleryFragment extends Fragment {
     //Postcondition: Displays a toast to ask the user if the app can access the video files
     //if the user clicks the ok button, the permission is granted and app can access device video files
     public void getPermissions(){
-        if (getActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        if (Objects.requireNonNull(getActivity()).checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             //will show explanation of why permission
             if (shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(Objects.requireNonNull(getContext()));
                 //set dialog message
                 builder.setMessage(R.string.permission_rationale);
                 //add ok button to dialog
@@ -270,7 +272,7 @@ public class GalleryFragment extends Fragment {
     // set the image file name
     private void dispatchTakeVideoIntent() {
         Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-        if (takeVideoIntent.resolveActivity(getContext().getPackageManager()) != null) {
+        if (takeVideoIntent.resolveActivity(Objects.requireNonNull(getContext()).getPackageManager()) != null) {
 
             String fileName = new SimpleDateFormat("yyyyMMddhhmm'.mp4'").format(new Date());
             File mediaFile = new
@@ -296,15 +298,14 @@ public class GalleryFragment extends Fragment {
         Uri videoUri =  intent.getData();
         if (requestCode == REQUEST_VIDEO_CAPTURE && resultCode == RESULT_OK) {
             //gets the file name of the video
+            assert videoUri != null;
             String s = videoUri.getLastPathSegment();
 
-           if (videoUri != null) {
-                VideoUpload v = new VideoUpload();
-                v.setmUri(videoUri);
-                v.SetTitle(videoUri.getLastPathSegment());
-                mGalleryViewModel.insertVideoUpload(v);
-                Toast.makeText(getActivity(), "Video has been saved", Toast.LENGTH_LONG).show();
-            }
+            VideoUpload v = new VideoUpload();
+            v.setmUri(videoUri);
+            v.SetTitle(videoUri.getLastPathSegment());
+            mGalleryViewModel.insertVideoUpload(v);
+            Toast.makeText(getActivity(), "Video has been saved", Toast.LENGTH_LONG).show();
 
         }
         //if the cancel button was hit show the message it was canceled
@@ -321,9 +322,8 @@ public class GalleryFragment extends Fragment {
     private  Bitmap convertUriTothumbnail (Uri uri){
         if(uri != null) {
             String path = uri.getPath();
-            Bitmap thumb = ThumbnailUtils.createVideoThumbnail(path,
+            return ThumbnailUtils.createVideoThumbnail(path,
                     MediaStore.Video.Thumbnails.MINI_KIND);
-            return thumb;
         }
         else {
             return null;

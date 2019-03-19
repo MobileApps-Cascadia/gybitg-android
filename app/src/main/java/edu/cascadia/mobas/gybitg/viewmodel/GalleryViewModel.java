@@ -82,7 +82,7 @@ public class GalleryViewModel extends AndroidViewModel {
             }
         }
         //if using liveData
-        /**if(title != null) {
+        /*if(title != null) {
          for (VideoUpload t : Objects.requireNonNull(mVideoUpload.getValue())) {
          if (t.GetTitle().equals(title)) {
          mVideoUpload.getValue().remove(t);
