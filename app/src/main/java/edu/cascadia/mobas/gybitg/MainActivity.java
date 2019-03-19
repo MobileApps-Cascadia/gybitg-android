@@ -3,43 +3,46 @@
 package edu.cascadia.mobas.gybitg;
 
 import android.app.Activity;
+import android.arch.lifecycle.ViewModel;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.Button;
-import android.widget.EditText;
 
-import edu.cascadia.mobas.gybitg.R;
+import edu.cascadia.mobas.gybitg.databinding.ActivityLogin2Binding;
+import edu.cascadia.mobas.gybitg.viewmodel.AccountLoginViewModel;
 
 
 public class MainActivity extends AppCompatActivity
         /*implements NavigationView.OnNavigationItemSelectedListener*/ {
     //instance variables
     //private boolean valid_info = false;
+    private AccountLoginViewModel alvm;
+    Intent profile_page;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
-        Button login_btn = (Button) findViewById(R.id.email_sign_in_button);
-        final EditText email = (EditText) findViewById(R.id.email);
-        final EditText password = (EditText) findViewById(R.id.password);
-        final Intent profile_page = new Intent(this, ProfileActivity.class);
 
-        login_btn.setOnClickListener(new View.OnClickListener() {
+        final Button login = findViewById(R.id.email_sign_in_button);
+        profile_page = new Intent(this, ProfileActivity.class);
+        ActivityLogin2Binding binding = DataBindingUtil.setContentView(this, R.layout.activity_login2);
+        alvm = new AccountLoginViewModel();
+        binding.setViewModel(alvm);
+
+
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(email.getText().toString().equals("ksmith@gmail.com") && password.getText().toString().equals("Baskets97")){
+                if(alvm.correctLogin()){
                     startActivity(profile_page);
                 }
             }
         });
-
 
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
        // setSupportActionBar(toolbar);

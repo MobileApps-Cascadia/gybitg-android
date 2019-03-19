@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="viewModel"
+            type="edu.cascadia.mobas.gybitg.viewmodel.AccountLoginViewModel" />
+    </data>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -61,6 +69,7 @@
                     android:textColorHint="@color/bodyTxt"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
+                    android:text="@={viewModel.email}"
                     />
 
             </android.support.design.widget.TextInputLayout>
@@ -71,21 +80,22 @@
                 android:textColorHint="@color/bodyTxt"
                 android:backgroundTint="@color/bodyTxt">
 
-                <EditText
-                    android:id="@+id/password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/prompt_password"
-                    android:imeActionId="6"
-                    android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:background="@android:color/transparent"
-                    android:textColor="@color/bodyTxt"
-                    android:textColorHint="@color/bodyTxt"
-                    android:layout_marginBottom="10dp"/>
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_password"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:background="@android:color/transparent"
+                android:textColor="@color/bodyTxt"
+                android:textColorHint="@color/bodyTxt"
+                android:layout_marginBottom="10dp"
+                android:text="@={viewModel.password}"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -99,7 +109,8 @@
                 android:text="@string/action_sign_in"
                 android:textStyle="bold"
                 android:textColor="@color/bodyTxt"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorAccent"
+                />
             <Button
                 android:id="@+id/forgotPWBtn"
                 android:layout_width="match_parent"
@@ -118,3 +129,4 @@
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
+</layout>
