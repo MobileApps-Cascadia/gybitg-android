@@ -3,18 +3,12 @@ package edu.cascadia.mobas.gybitg.viewmodel;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.MutableLiveData;
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
 import android.support.annotation.NonNull;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.widget.EditText;
 
 import java.util.Date;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import edu.cascadia.mobas.gybitg.BR;
 import edu.cascadia.mobas.gybitg.db.AppRepository;
 import edu.cascadia.mobas.gybitg.models.StatEntity;
 

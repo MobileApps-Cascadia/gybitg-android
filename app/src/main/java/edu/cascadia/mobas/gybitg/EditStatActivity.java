@@ -1,11 +1,8 @@
 package edu.cascadia.mobas.gybitg;
 
-import android.app.Application;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.database.sqlite.SQLiteConstraintException;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -15,25 +12,14 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.TextureView;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.util.Date;
-
-import edu.cascadia.mobas.gybitg.databinding.StatFormBinding;
-import edu.cascadia.mobas.gybitg.db.StatDao;
-import edu.cascadia.mobas.gybitg.db.gybitgDatabase;
 import edu.cascadia.mobas.gybitg.models.StatEntity;
 import edu.cascadia.mobas.gybitg.viewmodel.EditStatViewModel;
 
-import static edu.cascadia.mobas.gybitg.utilities.Constants.STAT_ID_KEY;
 import static edu.cascadia.mobas.gybitg.utilities.Constants.EDITING_KEY;
+import static edu.cascadia.mobas.gybitg.utilities.Constants.STAT_ID_KEY;
 
 public class EditStatActivity extends AppCompatActivity {
 
