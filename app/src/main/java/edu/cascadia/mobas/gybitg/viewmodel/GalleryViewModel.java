@@ -26,7 +26,7 @@ import edu.cascadia.mobas.gybitg.VideoUpload;
 
 public class GalleryViewModel extends AndroidViewModel {
 
-    public List<VideoUpload> mVideoUpload = new ArrayList<>(); //GallerySampleData.getVideos();
+    public List<VideoUpload> mVideoUpload = new ArrayList<>();
     //for mutableLiveData
     //public MutableLiveData<List<VideoUpload>> mVideoUpload = new MutableLiveData();
 
@@ -36,7 +36,6 @@ public class GalleryViewModel extends AndroidViewModel {
     public GalleryViewModel(@NonNull Application application) {
         super(application);
         //if using LiveData
-        //mVideoUpload.setValue(GallerySampleData.getVideos());
         // mVideoUpload.setValue(new ArrayList<VideoUpload>());
     }
 
@@ -75,6 +74,13 @@ public class GalleryViewModel extends AndroidViewModel {
     //Precondtion: the title passed is not null and the list contains the Video
     //Postconditon: the video with the title is deleted
     public void deleteVideoUpload(String title){
+        if(title != null) {
+            for (VideoUpload t : mVideoUpload) {
+                if (t.GetTitle().equals(title)) {
+                    mVideoUpload.remove(t);
+                }
+            }
+        }
         //if using liveData
         /**if(title != null) {
          for (VideoUpload t : Objects.requireNonNull(mVideoUpload.getValue())) {
@@ -83,14 +89,6 @@ public class GalleryViewModel extends AndroidViewModel {
          }
          }
          }*/
-
-        if(title != null) {
-            for (VideoUpload t : mVideoUpload) {
-                if (t.GetTitle().equals(title)) {
-                    mVideoUpload.remove(t);
-                }
-            }
-        }
 
     }
 

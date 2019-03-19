@@ -3,6 +3,12 @@
 //Will return the size of the list of the videolist
 //Will have a nested class ViewHolder to manage the view itself
 // and Will display the data in the view passed in the ViewHolder constructor
+//Has a onbindViewHolder method that is called each time a row is refreshed with data object
+//get a reference to the VideoUpload that is equal to the one at this position
+//sets the text of the GalleryText to the title
+//gets the path of the VideoUpload entity and creates a thumbnail with the path of the video
+//scales the thumbnail to width and height in pixels and if a filter should be used 1280 720 youtube uses
+//Will return the size of the list of the videolist
 package edu.cascadia.mobas.gybitg;
 
 import android.app.Activity;
@@ -37,6 +43,9 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
         notifyDataSetChanged();
     }
 
+    //Inflates the layout of the videolistrow
+    // Declares and Initializes the imageButton and setsOnclickListener to do something
+    //Returns the viewHolder with the view
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
@@ -51,23 +60,25 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
             }
         });
 
-        return  new GalleryAdapter.MyViewHolder(itemView);//(new ViewHolder(view));
+        return  new GalleryAdapter.MyViewHolder(itemView);
 
     }
 
     //called each time a row is refreshed with data object
-    //gets the path of the VideoUpload entity
+    //get a reference to the VideoUpload that is equal to the one at this position
+    //sets the text of the GalleryText to the title
+    //gets the path of the VideoUpload entity and creates a thumbnail with the path of the video
     //scales the thumbnail to width and height in pixels and if a filter should be used 1280 720 youtube uses
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder viewHolder, int position) {
-        //get a reference to a string that is the string in the list recieved
+
         VideoUpload videolisting = videolist.get(position);
         viewHolder.GalleryText.setText(videolisting.GetTitle());
         //call nextLine when Url setup for video uploading
         //holder.GalleryImage.setImageResource(videolisting.GetImageURL());
         Uri path = videolisting.getmUri();
         Bitmap thumb = ThumbnailUtils.createVideoThumbnail(path.getPath(), MediaStore.Video.Thumbnails.MINI_KIND);
-        // viewHolder.videoTitle.setText(path.getLastPathSegment());
+        // viewHolder.videoTitle.setText(path.getLastPathSegment()); to set the title to the name of the videofile
         viewHolder.GalleryText.setText("Video Title");
         Bitmap scaled = Bitmap.createScaledBitmap(thumb,1280,720, true);
         viewHolder.GalleryImage.setImageBitmap(scaled);
@@ -83,7 +94,8 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
     }
 
 
-    //set the list
+    //set the list of the videolist
+    //notifies the adapter of a change
     public void setVideolist(List<VideoUpload> videoUploads){
         videolist = videoUploads;
         notifyDataSetChanged();

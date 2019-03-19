@@ -1,4 +1,24 @@
 package edu.cascadia.mobas.gybitg;
+//This fragment will inflate the layout for this fragment in a
+// rootView variable for the recyclerView to utilize
+//checks for the camera hardware
+//Initializes the RecyclerView sets the Layoutmanager to a LinearLayout
+//sets the adapter list to the viewmodel list
+//Will intialize the GalleryViewModel the ViewModelProviders class handles the instantiation and
+// that is how the application component is passed in in the constructor in the ViewModel class
+//Will check to see if permission was granted to read the photo file provided
+// there is a permissions code in the Manifest
+//Will Displays a toast to ask the user if the app can access the video files
+//if the user clicks the ok button, the permission is granted and app can access device video files
+//Creates a new intent to open the camera app
+//Creates the file to save the video using a Simpledate for each video to be unique
+//create the file to save the video
+//Will have a onActivityResult called When the Activity ends it returns a result that is the video
+//checks to see if permission was granted to read the photo file
+//toast that says video saved
+//makes a new VideoUpload instance and sets the URI and title
+//adds the new Video to the viewmodel's list
+//if the cancel button was hit show the message it was canceled
 
 import android.Manifest;
 import android.arch.lifecycle.MutableLiveData;
@@ -109,7 +129,7 @@ public class GalleryFragment extends Fragment {
         galleryRecyclerView = (RecyclerView) rootView.findViewById(R.id.gallery_recycler_view);
         viewModelInit();
         recyclerInit();
-        //call this if the user is a student to access videos on device
+        //call this so the user can give permission to access videos on their
         getPermissions();
         testData();
         FloatingActionButton addVideo = rootView.findViewById(R.id.add_video);
@@ -213,8 +233,10 @@ public class GalleryFragment extends Fragment {
         return (getContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY));
     }
 
-    //check to see if permission was granted to read the photo file
-    //Will ask the user if the app can access the video files
+    //Purpose: to check to see if permission was granted to read the photo file
+    //Precondition: there is a permissions code in the Manifest
+    //Postcondition: Displays a toast to ask the user if the app can access the video files
+    //if the user clicks the ok button, the permission is granted and app can access device video files
     public void getPermissions(){
         if (getActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             //will show explanation of why permission
@@ -246,7 +268,6 @@ public class GalleryFragment extends Fragment {
     //Creates the file to save the video using a Simpledate for each video to be unique
     //create the file to save the video
     // set the image file name
-    //will be stored in a file in the storage camera folder if the second parameter not
     private void dispatchTakeVideoIntent() {
         Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
         if (takeVideoIntent.resolveActivity(getContext().getPackageManager()) != null) {
@@ -267,9 +288,8 @@ public class GalleryFragment extends Fragment {
     //When the Activity end it returns a result that is the video
     //check to see if permission was granted to read the photo file
     //toast that says the file of the video
-    //make a new video and set the URI and title
-    //add the new video with the Uri
-    //adds the new Video to the viewmodel
+    //make a new video instance and set the URI and title
+    //adds the new Video to the viewmode's list
     //if the cancel button was hit show the message it was canceled
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
