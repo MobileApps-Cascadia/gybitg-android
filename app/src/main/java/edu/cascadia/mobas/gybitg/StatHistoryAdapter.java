@@ -16,11 +16,11 @@ import edu.cascadia.mobas.gybitg.models.StatEntity;
 
 import static edu.cascadia.mobas.gybitg.utilities.Constants.STAT_ID_KEY;
 
-public class StatsHistoryAdapter extends RecyclerView.Adapter<StatsHistoryAdapter.ViewHolder> {
+public class StatHistoryAdapter extends RecyclerView.Adapter<StatHistoryAdapter.ViewHolder> {
     private List<StatEntity> mStats;
     private Context mContext;
 
-    public StatsHistoryAdapter(List<StatEntity> mStats, Context context) {
+    public StatHistoryAdapter(List<StatEntity> mStats, Context context) {
         this.mStats = mStats;
         this.mContext = context;
     }
@@ -42,7 +42,7 @@ public class StatsHistoryAdapter extends RecyclerView.Adapter<StatsHistoryAdapte
         holder.mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent editStat = new Intent(mContext, StatsActivity.class);
+                Intent editStat = new Intent(mContext, EditStatActivity.class);
                 editStat.putExtra(STAT_ID_KEY, stat.getId());
                 mContext.startActivity(editStat);
             }

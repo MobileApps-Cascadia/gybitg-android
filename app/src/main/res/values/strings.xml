@@ -74,5 +74,11 @@
     <string name="add_new_video">Add Video</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="view_history">View History</string>
+    <string name="edit_minutes_played">Minutes Played</string>
+    <string name="edit_blocks">Blocks</string>
+    <string name="edit_steals">Steals</string>
+    <string name="edit_points">Points</string>
+    <string name="edit_rebounds">Rebounds</string>
+    <string name="edit_assists">Assists</string>
 
 </resources>

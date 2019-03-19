@@ -17,7 +17,7 @@ import edu.cascadia.mobas.gybitg.db.AppRepository;
 import edu.cascadia.mobas.gybitg.models.StatEntity;
 import static edu.cascadia.mobas.gybitg.utilities.Constants.TEMP_USER_ID;
 
-public class StatsFragmentViewModel extends BaseObservable {
+public class StatFragmentViewModel extends BaseObservable {
 
     // Reference to the repository
     private AppRepository mRepository;
@@ -33,7 +33,7 @@ public class StatsFragmentViewModel extends BaseObservable {
     private float totalGames;
 
     // Constructor to initialize an instance of the repository
-    public StatsFragmentViewModel(@NonNull Application application) {
+    public StatFragmentViewModel(@NonNull Application application) {
 
         mRepository = AppRepository.getInstance(application.getApplicationContext());
 

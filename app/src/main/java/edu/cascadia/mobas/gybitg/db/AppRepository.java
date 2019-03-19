@@ -8,7 +8,6 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import edu.cascadia.mobas.gybitg.models.StatEntity;
-import edu.cascadia.mobas.gybitg.utilities.SampleData;
 
 import static edu.cascadia.mobas.gybitg.utilities.Constants.TEMP_USER_ID;
 

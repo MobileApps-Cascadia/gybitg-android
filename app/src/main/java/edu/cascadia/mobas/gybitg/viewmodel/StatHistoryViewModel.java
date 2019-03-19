@@ -11,12 +11,12 @@ import edu.cascadia.mobas.gybitg.db.AppRepository;
 import edu.cascadia.mobas.gybitg.models.StatEntity;
 
 
-public class StatsHistoryViewModel extends AndroidViewModel {
+public class StatHistoryViewModel extends AndroidViewModel {
 
     public LiveData<List<StatEntity>> mStats;
     private AppRepository mRepository;
 
-    public StatsHistoryViewModel(@NonNull Application application) {
+    public StatHistoryViewModel(@NonNull Application application) {
         super(application);
 
         mRepository = AppRepository.getInstance(application.getApplicationContext());

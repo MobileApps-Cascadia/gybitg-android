@@ -7,8 +7,9 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
-import android.support.design.button.MaterialButton;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity(tableName = "stat_table",
@@ -71,7 +72,9 @@ public class StatEntity {
     public String getUserId() { return userId; }
 
     public void setDateOfEntry(Date dateOfEntry) { this.dateOfEntry = dateOfEntry; }
-    public Date getDateOfEntry() { return dateOfEntry; }
+    public Date getDateOfEntry() {
+        return dateOfEntry;
+    }
 
     public void setPoints(int points) { this.points = points; }
     public int getPoints() { return points; }

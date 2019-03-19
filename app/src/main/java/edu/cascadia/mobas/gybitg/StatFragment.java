@@ -1,36 +1,31 @@
 package edu.cascadia.mobas.gybitg;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 
-import edu.cascadia.mobas.gybitg.viewmodel.StatsFragmentViewModel;
+import edu.cascadia.mobas.gybitg.viewmodel.StatFragmentViewModel;
 import edu.cascadia.mobas.gybitg.databinding.FragmentStatsBinding;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link StatsFragment.OnFragmentInteractionListener} interface
+ * {@link StatFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link StatsFragment#newInstance} factory method to
+ * Use the {@link StatFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StatsFragment extends Fragment {
+public class StatFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -43,9 +38,9 @@ public class StatsFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     // Create reference of StatFragmentViewModel
-    private StatsFragmentViewModel mFragmentViewModel;
+    private StatFragmentViewModel mFragmentViewModel;
 
-    public StatsFragment() {
+    public StatFragment() {
         // Required empty public constructor
     }
 
@@ -55,11 +50,11 @@ public class StatsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment StatsFragment.
+     * @return A new instance of fragment StatFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static StatsFragment newInstance(String param1, String param2) {
-        StatsFragment fragment = new StatsFragment();
+    public static StatFragment newInstance(String param1, String param2) {
+        StatFragment fragment = new StatFragment();
         Bundle args = new Bundle();
 
         args.putString(ARG_PARAM1, param1);
@@ -91,8 +86,8 @@ public class StatsFragment extends Fragment {
         // Initialize the view
         View view = binding.getRoot();
 
-        // Initialize the new StatsFragmentViewModel
-        mFragmentViewModel = new StatsFragmentViewModel(this.getActivity().getApplication());
+        // Initialize the new StatFragmentViewModel
+        mFragmentViewModel = new StatFragmentViewModel(this.getActivity().getApplication());
 
         // Set binding ViewModel and LifecycleOwner
         binding.setViewModel(mFragmentViewModel);
@@ -109,7 +104,7 @@ public class StatsFragment extends Fragment {
 
         // reference to the view stat history button
         final Button btn_view_history = view.findViewById(R.id.btn_view_history);
-        final StatsHistoryFragment statsHistoryFragment = new StatsHistoryFragment();
+        final StatHistoryFragment statsHistoryFragment = new StatHistoryFragment();
 
 
         // set up OnClick listener for Add Game button
@@ -118,7 +113,7 @@ public class StatsFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         // set up reference to new Intent
-                        final Intent editStat = new Intent(getActivity(), StatsActivity.class);
+                        final Intent editStat = new Intent(getActivity(), EditStatActivity.class);
                         startActivity(editStat);
                     }
                 });

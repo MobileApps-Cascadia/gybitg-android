@@ -6,12 +6,12 @@
     <data>
         <variable
         name="viewModel"
-        type="edu.cascadia.mobas.gybitg.viewmodel.StatsFragmentViewModel" />
+        type="edu.cascadia.mobas.gybitg.viewmodel.StatFragmentViewModel" />
     </data>
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StatsFragment">
+    tools:context=".StatFragment">
 
     <ScrollView
         android:id="@+id/login_form"
