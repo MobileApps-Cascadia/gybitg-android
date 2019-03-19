@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 import edu.cascadia.mobas.gybitg.databinding.ActivityLogin2Binding;
 import edu.cascadia.mobas.gybitg.viewmodel.AccountLoginViewModel;
@@ -18,22 +20,29 @@ public class MainActivity extends AppCompatActivity
         /*implements NavigationView.OnNavigationItemSelectedListener*/ {
     //instance variables
     //private boolean valid_info = false;
-    final Intent profile_page = new Intent(this, ProfileActivity.class);
     private AccountLoginViewModel alvm;
+    Intent profile_page;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
 
+        final Button login = findViewById(R.id.email_sign_in_button);
+        profile_page = new Intent(this, ProfileActivity.class);
         ActivityLogin2Binding binding = DataBindingUtil.setContentView(this, R.layout.activity_login2);
-        alvm = ViewModelProviders.of(this).get(AccountLoginViewModel.class);
+        alvm = new AccountLoginViewModel();
         binding.setViewModel(alvm);
-        binding.setLifecycleOwner(this);
 
-        if(alvm.correctLogin()){
-            startActivity(profile_page);
-        }
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(alvm.correctLogin()){
+                    startActivity(profile_page);
+                }
+            }
+        });
 
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
        // setSupportActionBar(toolbar);
