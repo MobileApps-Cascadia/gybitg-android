@@ -45,8 +45,6 @@ public class EditStatViewModel extends AndroidViewModel {
         });
     }
 
-    public void deleteStat() { mRepository.deleteStat(mLiveStat.getValue()); }
-
     public void saveOrUpdate(int mPoints, int mRebounds, int mAssists, int mSteals, int mBlocks, int mMinutesPlayed) {
         StatEntity stat = mLiveStat.getValue();
 
@@ -63,4 +61,6 @@ public class EditStatViewModel extends AndroidViewModel {
         }
         mRepository.insertStat(stat);
     }
+
+    public void deleteStat() { mRepository.deleteStat(mLiveStat.getValue()); }
 }

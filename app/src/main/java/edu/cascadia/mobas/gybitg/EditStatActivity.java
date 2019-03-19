@@ -59,6 +59,8 @@ public class EditStatActivity extends AppCompatActivity {
 
         if(savedInstanceState != null) {
             mEditing = savedInstanceState.getBoolean(EDITING_KEY);
+        } else {
+            mEditing = true;
         }
 
         initViewModel();
@@ -96,6 +98,7 @@ public class EditStatActivity extends AppCompatActivity {
         } else {
             setTitle(R.string.edit_game_stat);
             int statId = extras.getInt(STAT_ID_KEY);
+            mEditing = extras.getBoolean("STAT_EDITING");
             mViewModel.loadData(statId);
         }
     }
