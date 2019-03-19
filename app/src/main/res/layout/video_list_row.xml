@@ -31,8 +31,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="false"
+        android:layout_marginLeft="16dp"
         android:textSize="16dp"
         android:textStyle="bold"
         android:textColor="@color/bodyTxt"
-        android:layout_alignBottom="@id/thumbnail"/>
+        android:layout_alignBottom="@id/thumbnail"
+        />
 </RelativeLayout>
