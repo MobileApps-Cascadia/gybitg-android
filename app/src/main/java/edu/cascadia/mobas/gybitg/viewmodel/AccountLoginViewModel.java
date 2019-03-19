@@ -46,7 +46,7 @@ public class AccountLoginViewModel extends ViewModel {
         return false;
     }
 
-    public void onLoginButtonClicked(CharSequence email, CharSequence password, Intent intent){
+    public void onLoginButtonClicked(CharSequence email, CharSequence password){
         setEmail(email.toString());
         setPassword(password.toString());
         correctLogin();

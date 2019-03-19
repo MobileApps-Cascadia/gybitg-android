@@ -110,7 +110,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/bodyTxt"
                 android:background="@color/colorAccent"
-                android:OnClick="@{() -> viewModel.correctLogin() }"
+                android:OnClick="@{(v) -> viewModel.correctLogin()}"
                 />
             <Button
                 android:id="@+id/forgotPWBtn"
