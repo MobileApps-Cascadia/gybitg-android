@@ -14,7 +14,7 @@ import android.databinding.DataBindingUtil;
 import android.support.v4.app.FragmentTransaction;
 
 import edu.cascadia.mobas.gybitg.viewmodel.StatFragmentViewModel;
-import edu.cascadia.mobas.gybitg.databinding.FragmentStatsBinding;
+import edu.cascadia.mobas.gybitg.databinding.FragmentStatBinding;
 
 
 /**
@@ -80,8 +80,8 @@ public class StatFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         //Create a new binding using DataBindingUtil
-        FragmentStatsBinding binding = DataBindingUtil.inflate(
-                inflater, R.layout.fragment_stats, container, false);
+        FragmentStatBinding binding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_stat, container, false);
 
         // Initialize the view
         View view = binding.getRoot();

@@ -20,7 +20,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/stats_form" />
+    <include layout="@layout/stat_form" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_save_game"

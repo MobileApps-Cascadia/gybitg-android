@@ -80,5 +80,8 @@
     <string name="edit_points">Points</string>
     <string name="edit_rebounds">Rebounds</string>
     <string name="edit_assists">Assists</string>
+    <string name="delete">delete</string>
+    <string name="new_game_stat">New Game Stat</string>
+    <string name="edit_game_stat">Edit Game Stat</string>
 
 </resources>

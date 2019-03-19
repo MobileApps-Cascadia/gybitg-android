@@ -39,7 +39,7 @@ public class StatFragmentViewModel extends BaseObservable {
 
     }
 
-    // Bind the fragment_stats layout to the stat properties
+    // Bind the fragment_stat layout to the stat properties
     @Bindable
     public String getPoints() { return this.points; }
     @Bindable
@@ -53,7 +53,7 @@ public class StatFragmentViewModel extends BaseObservable {
     @Bindable
     public String getMinutesPlayed() { return this.minutesPlayed; }
 
-    // Using the two-binding to display the stats in the fragment_stats layout
+    // Using the two-binding to display the stats in the fragment_stat layout
     public void setStats(String mPoints, String mRebounds, String mAssists,
                          String mBlocks, String mSteals, String mMinutesPlayed) {
         this.points = mPoints;

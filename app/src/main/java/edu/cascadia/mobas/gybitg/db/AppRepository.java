@@ -31,6 +31,10 @@ public class AppRepository {
         mStats = getAllStatsByUserId(TEMP_USER_ID);
     }
 
+    public StatEntity getStatById(int statId) {
+        return mDb.statDao().getStatById(statId);
+    }
+
     public LiveData<List<StatEntity>> getAllStatsByUserId(String userId) {
         return mDb.statDao().getAllStatsByUserId(userId);
     }
@@ -51,5 +55,23 @@ public class AppRepository {
     }
     public List<Integer> getMinutesPlayedByUserId(String userId) {
         return mDb.statDao().getMinutesPlayedByUserId(userId);
+    }
+
+    public void deleteStat(final StatEntity stat) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                mDb.statDao().delete(stat);
+            }
+        });
+    }
+
+    public void insertStat(final StatEntity stat) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                mDb.statDao().insert(stat);
+            }
+        });
     }
 }

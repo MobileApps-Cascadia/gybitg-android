@@ -36,8 +36,8 @@ public class StatHistoryFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        // initialize the view with the stats_history_fragment layout
-        View rootView = inflater.inflate(R.layout.stats_history_fragment, container, false);
+        // initialize the view with the stat_history_fragment layout
+        View rootView = inflater.inflate(R.layout.stat_history_fragment, container, false);
 
         // get reference to recycler view
         mRecyclerView = rootView.findViewById(R.id.stat_recycler_view);

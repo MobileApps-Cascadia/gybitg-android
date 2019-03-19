@@ -50,4 +50,9 @@ public interface StatDao {
 
     @Query("SELECT minutes_played FROM stat_table WHERE user_id = :userId")
     List<Integer> getMinutesPlayedByUserId(String userId);
+
+    @Query("SELECT * from stat_table WHERE stat_id = :statId")
+    StatEntity getStatById(int statId);
+
+
 }
