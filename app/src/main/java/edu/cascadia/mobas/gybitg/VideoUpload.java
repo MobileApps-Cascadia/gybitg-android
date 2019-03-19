@@ -1,9 +1,11 @@
 package edu.cascadia.mobas.gybitg;
 
+import android.net.Uri;
+
 public class VideoUpload {
     private String title;
     private int imageURL;
-
+    private Uri mUri;
     public VideoUpload (){
 
     }
@@ -26,6 +28,14 @@ public class VideoUpload {
 
     public int GetImageURL(){
         return imageURL;
+    }
+
+    public void setmUri(Uri uri){
+        this.mUri = uri;
+    }
+
+    public Uri getmUri(){
+        return mUri;
     }
 
 }
