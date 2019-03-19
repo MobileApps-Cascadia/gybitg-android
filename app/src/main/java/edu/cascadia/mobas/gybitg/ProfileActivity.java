@@ -1,16 +1,10 @@
 package edu.cascadia.mobas.gybitg;
 
-import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import edu.cascadia.mobas.gybitg.R;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -34,7 +28,9 @@ public class ProfileActivity extends AppCompatActivity {
             }
 
             //Stats Fragment
-            final StatsFragment stats = new StatsFragment();
+            final StatFragment stats = new StatFragment();
+            // Stats History Fragment
+            final StatHistoryFragment statsHistory = new StatHistoryFragment();
 
             //Gallery Fragment
             final GalleryFragment gallery = new GalleryFragment();
@@ -70,6 +66,7 @@ public class ProfileActivity extends AppCompatActivity {
                     transaction.commit();
                 }
             });
+
 
             feed_tab.setOnClickListener(new View.OnClickListener() {
                 @Override

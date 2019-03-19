@@ -7,6 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">Sign in</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password </string>
@@ -61,7 +62,7 @@
     <string name="stats_add_game">ADD GAME</string>
     <string name="minutes_played">Minutes Played:</string>
     <string name="add_game">ADD GAME +</string>
-    <string name="enter_new_game_stats">Enter New Game Stats</string>
+    <string name="enter_new_game_stats">Enter Game Stats</string>
     <string name="points">Points:</string>
     <string name="rebounds">Rebounds:</string>
     <string name="assists">Assists:</string>
@@ -72,5 +73,15 @@
     <!-- Gallery -->
     <string name="add_new_video">Add Video</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="view_history">View History</string>
+    <string name="edit_minutes_played">Minutes Played</string>
+    <string name="edit_blocks">Blocks</string>
+    <string name="edit_steals">Steals</string>
+    <string name="edit_points">Points</string>
+    <string name="edit_rebounds">Rebounds</string>
+    <string name="edit_assists">Assists</string>
+    <string name="delete">delete</string>
+    <string name="new_game_stat">New Game Stat</string>
+    <string name="edit_game_stat">Edit Game Stat</string>
 
 </resources>

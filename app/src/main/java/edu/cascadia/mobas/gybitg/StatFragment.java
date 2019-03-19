@@ -4,22 +4,28 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.databinding.DataBindingUtil;
+import android.support.v4.app.FragmentTransaction;
+
+import edu.cascadia.mobas.gybitg.viewmodel.StatFragmentViewModel;
+import edu.cascadia.mobas.gybitg.databinding.FragmentStatBinding;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link StatsFragment.OnFragmentInteractionListener} interface
+ * {@link StatFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link StatsFragment#newInstance} factory method to
+ * Use the {@link StatFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StatsFragment extends Fragment {
+public class StatFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -31,7 +37,10 @@ public class StatsFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public StatsFragment() {
+    // Create reference of StatFragmentViewModel
+    private StatFragmentViewModel mFragmentViewModel;
+
+    public StatFragment() {
         // Required empty public constructor
     }
 
@@ -41,12 +50,13 @@ public class StatsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment StatsFragment.
+     * @return A new instance of fragment StatFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static StatsFragment newInstance(String param1, String param2) {
-        StatsFragment fragment = new StatsFragment();
+    public static StatFragment newInstance(String param1, String param2) {
+        StatFragment fragment = new StatFragment();
         Bundle args = new Bundle();
+
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
@@ -62,31 +72,68 @@ public class StatsFragment extends Fragment {
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_stats, container, false);
 
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+
+        //Create a new binding using DataBindingUtil
+        FragmentStatBinding binding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_stat, container, false);
+
+        // Initialize the view
+        View view = binding.getRoot();
+
+        // Initialize the new StatFragmentViewModel
+        mFragmentViewModel = new StatFragmentViewModel(this.getActivity().getApplication());
+
+        // Set binding ViewModel and LifecycleOwner
+        binding.setViewModel(mFragmentViewModel);
+        binding.setLifecycleOwner(this);
+
+        return  view;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        // setup reference to Add Game button
+        // setup reference and initialize the Add Game button
         final Button btn_add_game = view.findViewById(R.id.add_game);
 
-        // set up reference to new Intent
-        final Intent stats_page = new Intent(getActivity(), StatsActivity.class);
+        // reference to the view stat history button
+        final Button btn_view_history = view.findViewById(R.id.btn_view_history);
+        final StatHistoryFragment statsHistoryFragment = new StatHistoryFragment();
+
 
         // set up OnClick listener for Add Game button
         btn_add_game.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(stats_page);
+                        // set up reference to new Intent
+                        final Intent editStat = new Intent(getActivity(), EditStatActivity.class);
+                        startActivity(editStat);
                     }
                 });
+
+        // setup OnClick listener for View History button
+        btn_view_history.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        assert getFragmentManager() != null;
+                        final FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        ft.replace(R.id.profile_fragment_container, statsHistoryFragment);
+                        ft.addToBackStack(null);
+                        ft.commit();
+                    }
+                }
+        );
+
+        // Load the stats into the view
+        loadStats();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -101,10 +148,17 @@ public class StatsFragment extends Fragment {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
+
+            loadStats();
         } /*else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         } */
+    }
+
+    // Load the Athlete career average stats
+    private void loadStats() {
+        mFragmentViewModel.loadStats();
     }
 
     @Override

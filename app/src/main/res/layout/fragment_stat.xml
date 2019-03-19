@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+        name="viewModel"
+        type="edu.cascadia.mobas.gybitg.viewmodel.StatFragmentViewModel" />
+    </data>
+<FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StatsFragment">
+    tools:context=".StatFragment">
 
     <ScrollView
         android:id="@+id/login_form"
@@ -157,34 +165,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/basketBallStatstxt"
-                android:text="PPG"
+                android:text="PPG:"
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt" />
             <TextView
                 android:id="@+id/pointsValuetxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="20"
+                android:text="@{viewModel.points}"
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt"
                 android:layout_below="@id/basketBallStatstxt"
                 android:layout_toRightOf="@id/pointstxt"
-                android:textAlignment="textEnd"
-                />
+                android:textAlignment="textEnd" />
 
             <TextView
                 android:id="@+id/reboundstxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/pointstxt"
-                android:text="RPG:  "
+                android:text="RPG:"
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt" />
             <TextView
                 android:id="@+id/reboundsValuetxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="10"
+                android:text="@{viewModel.rebounds}"
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt"
                 android:layout_below="@id/pointsValuetxt"
@@ -196,7 +203,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/reboundstxt"
-                android:text="SPG:  "
+                android:text="SPG:"
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt" />
 
@@ -205,7 +212,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/reboundsValuetxt"
-                android:text="4"
+                android:text="@{viewModel.steals}"
                 android:textAlignment="textEnd"
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt" />
@@ -215,14 +222,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/stealstxt"
-                android:text="APG:  "
+                android:text="APG:"
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt" />
             <TextView
                 android:id="@+id/assistsValuetxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="5"
+                android:text="@{viewModel.assists}"
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt"
                 android:layout_below="@id/stealsValuetxt"
@@ -232,14 +239,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/assiststxt"
-                android:text="BPG"
+                android:text="BPG:"
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt" />
             <TextView
                 android:id="@+id/blocksValuetxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="2"
+                android:text="@{viewModel.blocks}"
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt"
                 android:layout_below="@id/assistsValuetxt"
@@ -247,22 +254,31 @@
                 android:textAlignment="textEnd"
                 />
             <TextView
-                android:id="@+id/fgpercenttxt"
+                android:id="@+id/minutesPlayedtxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="FG%:  "
+                android:text="MPG:"
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt"
                 android:layout_below="@id/blocksstxt"/>
             <TextView
-                android:id="@+id/fgpercentValuetxt"
+                android:id="@+id/minutesPlayedValuetxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="53.0"
+                android:text="@{viewModel.minutesPlayed}"
                 android:textColor="@color/bodyTxt"
                 android:textColorHighlight="@color/bodyTxt"
                 android:layout_below="@id/blocksValuetxt"
                 android:textAlignment="textEnd"/>
+
+            <Button
+                android:id="@+id/btn_view_history"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginTop="111dp"
+                android:layout_marginEnd="8dp"
+                android:layout_toStartOf="@+id/add_game"
+                android:text="@string/view_history" />
 
             <Button
                 android:id="@+id/add_game"
@@ -277,3 +293,4 @@
         </RelativeLayout>
     </ScrollView>
 </FrameLayout>
+</layout>

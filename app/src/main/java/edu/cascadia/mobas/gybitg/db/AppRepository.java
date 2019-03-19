@@ -8,7 +8,9 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import edu.cascadia.mobas.gybitg.models.StatEntity;
-import edu.cascadia.mobas.gybitg.utilities.SampleData;
+
+import static edu.cascadia.mobas.gybitg.utilities.Constants.TEMP_USER_ID;
+
 
 public class AppRepository {
     private static AppRepository ourInstance;
@@ -26,12 +28,50 @@ public class AppRepository {
 
     private AppRepository(Context context) {
         mDb = gybitgDatabase.getDatabase(context);
-        mStats = getAllStats();
+        mStats = getAllStatsByUserId(TEMP_USER_ID);
     }
 
-    private LiveData<List<StatEntity>> getAllStats() {
-        return mDb.statDao().getAllStats();
+    public StatEntity getStatById(int statId) {
+        return mDb.statDao().getStatById(statId);
     }
 
+    public LiveData<List<StatEntity>> getAllStatsByUserId(String userId) {
+        return mDb.statDao().getAllStatsByUserId(userId);
+    }
+    public List<Integer> getPointsByUserId(String userId) {
+        return mDb.statDao().getPointsByUserId(userId);
+    }
+    public List<Integer> getReboundsByUserId(String userId) {
+        return  mDb.statDao().getReboundsByUserId(userId);
+    }
+    public List<Integer> getAssistsByUserId(String userId) {
+        return mDb.statDao().getAssistsByUserId(userId);
+    }
+    public List<Integer> getStealsByUserId(String userId) {
+        return mDb.statDao().getStealsByUserId(userId);
+    }
+    public List<Integer> getBlocksByUserId(String userId) {
+        return mDb.statDao().getBlocksByUserId(userId);
+    }
+    public List<Integer> getMinutesPlayedByUserId(String userId) {
+        return mDb.statDao().getMinutesPlayedByUserId(userId);
+    }
 
+    public void deleteStat(final StatEntity stat) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                mDb.statDao().delete(stat);
+            }
+        });
+    }
+
+    public void insertStat(final StatEntity stat) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                mDb.statDao().insert(stat);
+            }
+        });
+    }
 }

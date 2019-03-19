@@ -50,7 +50,7 @@
         <activity
             android:name=".ProfileCreateActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".StatsActivity"></activity>
+        <activity android:name=".EditStatActivity"></activity>
     </application>
 
 </manifest>
