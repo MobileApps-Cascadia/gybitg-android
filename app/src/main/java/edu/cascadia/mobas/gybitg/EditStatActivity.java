@@ -18,6 +18,7 @@ import android.widget.EditText;
 import edu.cascadia.mobas.gybitg.models.StatEntity;
 import edu.cascadia.mobas.gybitg.viewmodel.EditStatViewModel;
 
+import static edu.cascadia.mobas.gybitg.utilities.Constants.TEMP_USER_ID;
 import static edu.cascadia.mobas.gybitg.utilities.Constants.EDITING_KEY;
 import static edu.cascadia.mobas.gybitg.utilities.Constants.STAT_ID_KEY;
 
