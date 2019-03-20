@@ -44,7 +44,8 @@ public class StatHistoryAdapter extends RecyclerView.Adapter<StatHistoryAdapter.
             public void onClick(View v) {
                 Intent editStat = new Intent(mContext, EditStatActivity.class);
                 editStat.putExtra(STAT_ID_KEY, stat.getId());
-                mContext.startActivity(editStat);
+                // Not currently working
+                // mContext.startActivity(editStat);
             }
         });
 
